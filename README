@@ -1,0 +1,16 @@
+Copyright 2010 Guido De Rosa <guido.derosa at vemarsas.it>
+
+License: MIT
+
+An inplementation in Ruby/Sinatra of the login page used with 
+ChilliSpot and friends.
+
+It's been tested with CoovaChilli (see http://coova.org/), which is an
+actively maintained version of the original ChilliSpot (now defunct).
+
+Disable uamuiport option in CoovaChilli configuration!
+
+And configure http:/<ip>:4990 as the uamserver! Where, 4990 is the default
+listening port of hotspotlogin.rb .
+
+
