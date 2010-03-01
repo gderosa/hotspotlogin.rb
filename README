@@ -8,6 +8,10 @@ ChilliSpot and friends.
 It's been tested with CoovaChilli ( see http://coova.org/ ), which is an
 actively maintained version of the original ChilliSpot (now defunct).
 
+Inspired by hotspotlogin.cgi (written in Perl, included in ChilliSpot and 
+CoovaChili) and its PHP port, hotspotlogin.php,  
+found in: http://www.chillispot.info/chilliforum/viewtopic.php?pid=80#p80
+
 Disable uamuiport option in CoovaChilli configuration!
 
 And configure http:/<ip>:4990 as the uamserver! Where, 4990 is the default
