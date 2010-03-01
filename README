@@ -5,7 +5,7 @@ License: MIT
 An inplementation in Ruby/Sinatra of the login page used with 
 ChilliSpot and friends.
 
-It's been tested with CoovaChilli (see http://coova.org/), which is an
+It's been tested with CoovaChilli ( see http://coova.org/ ), which is an
 actively maintained version of the original ChilliSpot (now defunct).
 
 Disable uamuiport option in CoovaChilli configuration!
