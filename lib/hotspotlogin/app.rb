@@ -53,7 +53,8 @@ module HotSpotLogin
     # params['timeleft']
     # params['redirurl']
 
-    get '/(hotspotlogin(.rb)?/?)?' do
+    # Matches '/', '/hotspotlogin' and '/hotspotlogin.rb'
+    get %r{^/(hotspotlogin(\.rb)?/?)?$} do 
       haml(
         :hotspotlogin,
         :locals => {
