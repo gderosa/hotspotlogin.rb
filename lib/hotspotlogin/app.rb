@@ -74,7 +74,10 @@ module HotSpotLogin
         end
         response = Digest::MD5.hexdigest("\0" + params['Password'] + newchal)
         newpwd = params['Password'].chars.to_a.pack('a32') 
-        (newpwd ^ newchal).unpack('H32').join
+        pappassword = (newpwd ^ newchal).unpack('H32').join 
+        title = 'Logging in to HotSpot'
+        headline = 'Logging in to HotSpot'
+        
 
       end
 
