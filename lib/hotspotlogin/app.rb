@@ -68,17 +68,24 @@ module HotSpotLogin
 
       # attempt to login
       if params['login'] == 'login'
-        hexchal = params['chal'].chars.to_a.pack('H32')
+        hexchal = Array[params['chal']].pack('H32')
         if uamsecret
           newchal = 
-              Digest::MD5.hexdigest(hexchal + uamsecret).chars.to_a.pack('H*')
+              Array[Digest::MD5.hexdigest(hexchal + uamsecret)].pack('H*')
         else
           newchal = hexchal
         end
         response = Digest::MD5.hexdigest("\0" + params['Password'] + newchal)
-        newpwd = params['Password'].chars.to_a.pack('a32') 
+        newpwd = Array[params['Password']].pack('a32') 
+begin        
         pappassword = (newpwd ^ newchal).unpack('H32').join 
-
+rescue NoMethodError
+  pp uamsecret
+  pp params['Password']
+  pp newpwd
+  pp newchal
+  exit 
+end
         titel = 'Logging in to HotSpot'
         headline = 'Logging in to HotSpot'
 
