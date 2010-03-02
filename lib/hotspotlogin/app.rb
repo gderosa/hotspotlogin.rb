@@ -78,13 +78,13 @@ module HotSpotLogin
         pappassword = (newpwd ^ newchal).unpack('H32').join 
 
         if uamsecret and userpassword
-          headers {
+          headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}" # NOTE: no userurl passed... why? 
-          }
+          })
         else
-          headers {
+          headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&response=#{response}&userurl=#{params['userurl']}"
-          }
+          })
         end
 
         erb(
@@ -100,7 +100,10 @@ module HotSpotLogin
         erb(
           :default,
           :locals => {
-            :config => HotSpotLogin.config
+            :config => HotSpotLogin.config,
+            :uamip => params['uamip'],
+            :uamport => params['uamport'],
+            :result => ''
           }
         )
       end
