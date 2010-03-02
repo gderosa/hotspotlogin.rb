@@ -62,6 +62,7 @@ module HotSpotLogin
       else
         uamsecret = nil
       end
+      userpassword = HotSpotLogin.config[:userpassword]
 
       # attempt to login
       if params['login'] == 'login'
@@ -76,11 +77,23 @@ module HotSpotLogin
         newpwd = params['Password'].chars.to_a.pack('a32') 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
 
+        if uamsecret and userpassword
+          headers {
+            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}" # NOTE: no userurl passed... why? 
+          }
+        else
+          headers {
+            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&response=#{response}&userurl=#{params['userurl']}"
+          }
+        end
+
         erb(
-          :logging_in,
+          :hotspotlogin,
           :locals => {
             :uamip => params['uamip'],
-            :uamport => params['uamport']
+            :uamport => params['uamport'],
+            :result => '' # NOTE: WARN: in the PHP, in this case, $result is 
+                          # simply not set :-(
           }
         )
       else
