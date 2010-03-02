@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
-require 'haml'
+require 'erb'
 require 'pp'
 
 require 'hotspotlogin/config'
@@ -12,7 +12,7 @@ module HotSpotLogin
     enable :show_exceptions
 
     not_found do
-      haml :"404" # Sinatra doesn't know this ditty ;-)
+      erb :"404" # Sinatra doesn't know this ditty ;-)
     end
 
     # comments adapted from hotspotlogin.php :
@@ -75,18 +75,22 @@ module HotSpotLogin
         response = Digest::MD5.hexdigest("\0" + params['Password'] + newchal)
         newpwd = params['Password'].chars.to_a.pack('a32') 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
-        title = 'Logging in to HotSpot'
-        headline = 'Logging in to HotSpot'
-        
 
+        erb(
+          :logging_in,
+          :locals => {
+            :uamip => params['uamip'],
+            :uamport => params['uamport']
+          }
+        )
+      else
+        erb(
+          :default,
+          :locals => {
+            :config => HotSpotLogin.config
+          }
+        )
       end
-
-      haml(
-        :hotspotlogin,
-        :locals => {
-          :config => HotSpotLogin.config
-        }
-      )
     end
 
   end
