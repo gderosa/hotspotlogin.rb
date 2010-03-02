@@ -52,6 +52,8 @@ module HotSpotLogin
     # params['userurl']
     # params['timeleft']
     # params['redirurl']
+    
+    result, titel, headline, bodytext = '', '', '', ''
 
     # Matches '/', '/hotspotlogin' and '/hotspotlogin.rb'
     get %r{^/(hotspotlogin(\.rb)?/?)?$} do 
@@ -77,6 +79,9 @@ module HotSpotLogin
         newpwd = params['Password'].chars.to_a.pack('a32') 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
 
+        titel = 'Logging in to HotSpot'
+        headline = 'Logging in to HotSpot'
+
         if uamsecret and userpassword
           headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}" # NOTE: no userurl passed... why? 
@@ -87,26 +92,60 @@ module HotSpotLogin
           })
         end
 
-        erb(
-          :hotspotlogin,
-          :locals => {
-            :uamip => params['uamip'],
-            :uamport => params['uamport'],
-            :result => '' # NOTE: WARN: in the PHP, in this case, $result is 
-                          # simply not set :-(
-          }
-        )
-      else
-        erb(
-          :default,
-          :locals => {
-            :config => HotSpotLogin.config,
-            :uamip => params['uamip'],
-            :uamport => params['uamport'],
-            :result => ''
-          }
-        )
+      elsif params['res'] == 'success' 
+        result = 1
+        titel = 'Logged in to HotSpot'
+        headline = 'Logged in to HotSpot'
+        bodytext = 'Welcome'
+      elsif params['res'] == 'failed' 
+        result = 2
+        titel = 'HotSpot Login Failed'
+        headline = 'HotSpot Login Failed'
+      elsif params['res'] == 'logoff'
+        result = 3
+        titel = 'Logged out from HotSpot'
+        headline = 'Logged out from HotSpot'
+      elsif params['res'] == 'already' 
+        result = 4
+        titel = 'Already logged in to HotSpot'
+        headline = 'Already logged in to HotSpot'
+      elsif params['res'] == 'notyet'
+        result = 5
+        titel = 'Logged out from HotSpot'
+        headline = 'Logged out from HotSpot'
+      elsif params['res'] == 'popup1'
+        result = 11
+        titel = 'Logging into HotSpot'
+        headline = 'Logged in to HotSpot'
+      elsif params['res'] == 'popup2'
+        result = 12
+        titel = 'Logged in to HotSpot'
+        headline = 'Logged in to HotSpot'
+      elsif params['res'] == 'popup3'
+        result= 13
+        titel = 'Logged out from HotSpot'
+        headline = 'Logged out from HotSpot'
+      elsif params['res'] == '' or !params['res'] # not a form request: err!
+        result = 0
+        titel = 'What do you want here?'
+        headline = 'HotSpot Login Failed'
       end
+
+      erb(
+        :hotspotlogin,
+        :locals => {
+          :titel => titel,
+          :headline => headline,
+          :bodytext => bodytext,
+          :uamip => params['uamip'],
+          :uamport => params['uamport'],
+          :userurl => params['userurl'],
+          :redirurl => params['redirurl'],
+          :timeleft => params['timeleft'],
+          :result => result
+        }
+      )
+
     end
 
   end

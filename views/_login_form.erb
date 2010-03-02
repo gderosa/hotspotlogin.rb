@@ -1,0 +1,19 @@
+<FORM name="form1" METHOD="get" action="<%= request.path_info %>?">
+  <INPUT TYPE="HIDDEN" NAME="chal" VALUE="<%= params['challenge'] %>">
+  <INPUT TYPE="HIDDEN" NAME="uamip" VALUE="<%= params['uamip'] %>">
+  <INPUT TYPE="HIDDEN" NAME="uamport" VALUE="<%= params['uamport'] %>">
+  <INPUT TYPE="HIDDEN" NAME="userurl" VALUE="<%= params['userurl'] %>">
+  <table>
+    <tbody>
+      <tr>
+        <td>Login:</td>
+        <td><input type="text" name="UserName" size="20" maxlength="255"></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="Password" size="20" maxlength="255"></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="submit" name="login" value="login">
+</form>

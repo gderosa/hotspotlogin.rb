@@ -1,0 +1,30 @@
+<h1><%= titel %></h1>
+<% if [1, 4, 12].include? result %>
+  <div style="text-align: center;">
+    <a href="http://<%= uamip %>:<%= uamport %>/logoff">
+      Logout
+    </a>
+  </div>
+<% elsif [2, 5].include? result %>
+  <%= 
+    erb(
+      :_login_form,
+      :layout => false
+    )  
+  %>
+<% elsif [3, 13].include? result %>
+  <div style="text-align: center;">
+    <a href="http://<%= uamip %>:<%= uamport %>/prelogin">
+      Login
+    </a>
+  </div>
+<% elsif result == 11 %>
+  <p>Please wait.. </p> <!-- popup1 -->
+<% elsif result == 0 %>
+  <p>Login must be performed through ChilliSpot daemon!</p>
+<% end %>
+
+
+<% if params['reply'] %>
+  <div style="text-align: center;"><%= params['reply'] %></div>
+<% end %>
