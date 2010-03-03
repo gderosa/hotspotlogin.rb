@@ -5,8 +5,6 @@ require 'sinatra/base'
 
 require File.expand_path(File.dirname(__FILE__) + "/../lib/hotspotlogin")
 
-HotSpotLogin::App.run!(:port => 4990) 
-  # TODO: choose port via cmdline option --port 
-  # TODO: use Aaron Quint's Vegas or something?
+HotSpotLogin::App.run!(:port => HotSpotLogin.config['port']) 
 
 

@@ -5,12 +5,14 @@ module HotSpotLogin
 
   UAMSECRET       = 'uamsecret'
   USERPASSWORD    = true
+  PORT            = 4990
 
   # TODO: do not hardcode, use cmdline options or config files 
 
   @@config        = {
-    :uamsecret      => UAMSECRET,
-    :userpassword   => USERPASSWORD
+    'uamsecret'     => UAMSECRET,
+    'userpassword'  => USERPASSWORD,
+    'port'          => PORT
   } 
 
   def self.config; @@config; end

@@ -59,13 +59,13 @@ module HotSpotLogin
     # Matches '/', '/hotspotlogin' and '/hotspotlogin.rb'
     get %r{^/(hotspotlogin(\.rb)?/?)?$} do 
 
-      if HotSpotLogin.config[:uamsecret] and
-          HotSpotLogin.config[:uamsecret].length > 0
-        uamsecret = HotSpotLogin.config[:uamsecret]
+      if HotSpotLogin.config['uamsecret'] and
+          HotSpotLogin.config['uamsecret'].length > 0
+        uamsecret = HotSpotLogin.config['uamsecret']
       else
         uamsecret = nil
       end
-      userpassword = HotSpotLogin.config[:userpassword]
+      userpassword = HotSpotLogin.config['userpassword']
 
       # attempt to login
       if params['login'] == 'login'
@@ -78,20 +78,21 @@ module HotSpotLogin
         end
         response = Digest::MD5.hexdigest("\0" + params['Password'] + newchal)
         newpwd = Array[params['Password']].pack('a32') 
+        # bitwise XOR between (binary) Strings (operator ^) 
+        # implemented in extensions/ 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
         titel = 'Logging in to HotSpot'
         headline = 'Logging in to HotSpot'
 
         if uamsecret and userpassword
           headers({
-            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}" # NOTE: no userurl passed... why? 
+            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}&userurl=#{params['userurl']}" # NOTE: no userurl passed... why? 
           })
         else
           headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&response=#{response}&userurl=#{params['userurl']}"
           })
         end
-
       elsif params['res'] == 'success' 
         result = 1
         titel = 'Logged in to HotSpot'
