@@ -4,6 +4,7 @@ require 'erb'
 require 'pp'
 
 require 'hotspotlogin/config'
+require 'hotspotlogin/extensions/string'
 
 module HotSpotLogin 
   class App < Sinatra::Base
@@ -77,15 +78,7 @@ module HotSpotLogin
         end
         response = Digest::MD5.hexdigest("\0" + params['Password'] + newchal)
         newpwd = Array[params['Password']].pack('a32') 
-begin        
         pappassword = (newpwd ^ newchal).unpack('H32').join 
-rescue NoMethodError
-  pp uamsecret
-  pp params['Password']
-  pp newpwd
-  pp newchal
-  exit 
-end
         titel = 'Logging in to HotSpot'
         headline = 'Logging in to HotSpot'
 
