@@ -7,6 +7,9 @@ require File.expand_path(File.dirname(__FILE__) + "/../lib/hotspotlogin")
 
 HotSpotLogin.config!
 
-HotSpotLogin::App.run!(:port => HotSpotLogin.config['port']) 
+HotSpotLogin::App.run!(
+  :host => HotSpotLogin.config['listen-address'], 
+  :port => HotSpotLogin.config['port']
+) 
 
 
