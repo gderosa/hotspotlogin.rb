@@ -4,13 +4,13 @@ module HotSpotLogin
 
   # defaults
 
-  UAMSECRET       = 'uamsecret'
-  USERPASSWORD    = true
+  # UAMSECRET       = 'uamsecret'
+  # USERPASSWORD    = true
   PORT            = 4990
 
   @@config        = {
-    'uamsecret'     => UAMSECRET,
-    'userpassword'  => USERPASSWORD,
+    # 'uamsecret'     => UAMSECRET,
+    # 'userpassword'  => USERPASSWORD,
     'port'          => PORT
   } 
 
