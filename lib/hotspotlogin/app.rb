@@ -103,7 +103,9 @@ module HotSpotLogin
         #if uamsecret and userpassword
         if userpassword
           headers({
-            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}&userurl=#{params['userurl']}" # NOTE: no userurl passed... why? 
+            'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}&userurl=#{params['userurl']}" 
+            # NOTE: no userurl passed... why? 
+            # NOTE: if you pass it, nothing changes
           })
         else
           headers({
@@ -158,7 +160,8 @@ module HotSpotLogin
           :uamip => params['uamip'],
           :uamport => params['uamport'],
           :userurl => params['userurl'],
-          :redirurl => params['redirurl'],
+          #:redirurl => params['redirurl'],
+          :redirurl => params['userurl'],
           :timeleft => params['timeleft'],
           :result => result
         }

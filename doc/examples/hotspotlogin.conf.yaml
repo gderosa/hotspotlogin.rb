@@ -3,3 +3,4 @@ listen-address: 127.0.0.1
 port: 4991 
 uamsecret: uampass
 userpassword: false
+log-http: true
