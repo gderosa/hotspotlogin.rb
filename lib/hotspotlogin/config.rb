@@ -1,4 +1,5 @@
 require 'optparse'
+require 'yaml'
 
 module HotSpotLogin
 
@@ -18,12 +19,14 @@ module HotSpotLogin
 
   def self.config=(h); @@config = h; end
 
-  def self.parse_cmdline!
+  # Parses command line and configuration file
+  def self.config!
     OptionParser.new do |opts|
       opts.banner = "Usage: #{$0} [options]"
 
       opts.on('--conf FILE', 'configuration file') do |filename|
         @@config['conf'] = filename
+        @@config.merge! YAML.load(File.read filename) 
       end
 
       opts.on('--uamsecret PASS', 'as in chilli.conf(5)') do |uamsecret|
@@ -38,7 +41,6 @@ module HotSpotLogin
         @@config['port'] = v.to_i
       end
     end.parse!
-    pp @@config
   end
     
 end
