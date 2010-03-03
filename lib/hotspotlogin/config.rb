@@ -3,19 +3,14 @@ require 'yaml'
 
 module HotSpotLogin
 
-  # defaults
-
-  # UAMSECRET       = 'uamsecret'
-  # USERPASSWORD    = true
-  LISTEN_ADDRESS  = '0.0.0.0'
-  PORT            = 4990
-
-  @@config        = {
-    # 'uamsecret'     => UAMSECRET,
-    # 'userpassword'  => USERPASSWORD,
-    'listen-address'  => LISTEN_ADDRESS,
-    'port'            => PORT
+  DEFAULT_CONFIG = {
+    'listen-address'    => '0.0.0.0',
+    'port'              => 4990,
+    'log-http'          => false,
+    'userpassword'      => false # like $userpassword in hotpotlgin.(cgi|php)
   } 
+
+  @@config = DEFAULT_CONFIG unless class_variable_defined? :@@config
 
   def self.config; @@config; end
 
@@ -35,7 +30,7 @@ module HotSpotLogin
         @@config['uamsecret'] = uamsecret
       end
 
-      opts.on('--userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi') do |userpassword|
+      opts.on('--userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi') do
         @@config['userpassword'] = true
       end
 
@@ -45,6 +40,10 @@ module HotSpotLogin
 
       opts.on('--listen-address ADDR', 'IP address or hostname to listen on') do |addr|
         @@config['listen-address'] = addr
+      end
+
+      opts.on('--log-http', 'output an Apache-like log') do 
+        @@config['log-http'] = true
       end
 
     end.parse!

@@ -12,8 +12,25 @@ module HotSpotLogin
     set :root, File.dirname(__FILE__) + '/../..'
     enable :show_exceptions
 
-    not_found do
-      erb :"404" # Sinatra doesn't know this ditty ;-)
+    include ERB::Util # for html_escape...
+
+    result, titel, headline, bodytext = '', '', '', ''
+
+    not_found do # Sinatra doesn't know this ditty ;-)
+      erb(
+        :"404",
+        :locals => {
+          :titel => 'Not Found',
+          :headline => headline,
+          :bodytext => bodytext,
+          :uamip => params['uamip'],
+          :uamport => params['uamport'],
+          :userurl => params['userurl'],
+          :redirurl => params['redirurl'],
+          :timeleft => params['timeleft'],
+          :result => nil
+        }
+      )
     end
 
     # comments adapted from hotspotlogin.php :
@@ -54,7 +71,6 @@ module HotSpotLogin
     # params['timeleft']
     # params['redirurl']
     
-    result, titel, headline, bodytext = '', '', '', ''
 
     # Matches '/', '/hotspotlogin' and '/hotspotlogin.rb'
     get %r{^/(hotspotlogin(\.rb)?/?)?$} do 
@@ -84,7 +100,8 @@ module HotSpotLogin
         titel = 'Logging in to HotSpot'
         headline = 'Logging in to HotSpot'
 
-        if uamsecret and userpassword
+        #if uamsecret and userpassword
+        if userpassword
           headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}&userurl=#{params['userurl']}" # NOTE: no userurl passed... why? 
           })
