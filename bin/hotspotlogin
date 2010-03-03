@@ -5,6 +5,8 @@ require 'sinatra/base'
 
 require File.expand_path(File.dirname(__FILE__) + "/../lib/hotspotlogin")
 
+HotSpotLogin.parse_cmdline!
+
 HotSpotLogin::App.run!(:port => HotSpotLogin.config['port']) 
 
 
