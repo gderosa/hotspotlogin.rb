@@ -12,6 +12,10 @@ module HotSpotLogin
     set :root, File.dirname(__FILE__) + '/../..'
     enable :show_exceptions
 
+    set :host,    HotSpotLogin.config['listen-address']
+    set :port,    HotSpotLogin.config['port']
+    set :logging, HotSpotLogin.config['log-http']
+
     include ERB::Util # for html_escape...
 
     result, titel, headline, bodytext = '', '', '', ''

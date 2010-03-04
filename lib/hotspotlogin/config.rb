@@ -47,6 +47,12 @@ module HotSpotLogin
       end
 
     end.parse!
+
+    # Now, set the Sinatra App
+    App.set :host,    @@config['listen-address']
+    App.set :port,    @@config['port']
+    App.set :logging, @@config['log-http']
+    
   end
     
 end
