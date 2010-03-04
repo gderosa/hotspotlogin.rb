@@ -7,7 +7,7 @@ module HotSpotLogin
     'listen-address'    => '0.0.0.0',
     'port'              => 4990,
     'log-http'          => false,
-    'userpassword'      => false # like $userpassword in hotpotlgin.(cgi|php)
+    'userpassword'      => true # like $userpassword in hotpotlgin.(cgi|php)
   } 
 
   @@config = DEFAULT_CONFIG unless class_variable_defined? :@@config
