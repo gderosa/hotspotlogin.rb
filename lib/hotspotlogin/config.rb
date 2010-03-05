@@ -1,14 +1,9 @@
 require 'optparse'
 require 'yaml'
 
-module HotSpotLogin
+require 'hotspotlogin/constants'
 
-  DEFAULT_CONFIG = {
-    'listen-address'    => '0.0.0.0',
-    'port'              => 4990,
-    'log-http'          => false,
-    'userpassword'      => true # like $userpassword in hotpotlgin.(cgi|php)
-  } 
+module HotSpotLogin
 
   @@config = DEFAULT_CONFIG unless class_variable_defined? :@@config
 
@@ -21,10 +16,14 @@ module HotSpotLogin
     OptionParser.new do |opts|
       opts.banner = "Usage: #{$0} [options]"
 
+      # Configuration file, if specified.
+
       opts.on('--conf FILE', 'configuration file') do |filename|
         @@config['conf'] = filename
         @@config.merge! YAML.load(File.read filename) 
       end
+
+      # Command line switches override configuration file.
 
       opts.on('--uamsecret PASS', 'as in chilli.conf(5)') do |uamsecret|
         @@config['uamsecret'] = uamsecret
