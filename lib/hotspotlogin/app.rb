@@ -20,6 +20,9 @@ module HotSpotLogin
 
     result, titel, headline, bodytext = '', '', '', ''
 
+    # TODO: This is not classy: all that JS code should not be layout.erb;
+    # to avoid failures we have to pass all this de-facto unused variables...
+    # Horror  ;-/    
     not_found do # Sinatra doesn't know this ditty ;-)
       erb(
         :"404",
