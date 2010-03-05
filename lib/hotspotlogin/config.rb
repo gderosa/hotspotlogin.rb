@@ -30,8 +30,8 @@ module HotSpotLogin
         @@config['uamsecret'] = uamsecret
       end
 
-      opts.on('--userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi') do
-        @@config['userpassword'] = true
+      opts.on('--[no-]userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi') do |userpassword|
+        @@config['userpassword'] = userpassword
       end
 
       opts.on('--port PORT', 'TCP port to listen on') do |port|
@@ -42,8 +42,8 @@ module HotSpotLogin
         @@config['listen-address'] = addr
       end
 
-      opts.on('--log-http', 'output an Apache-like log') do 
-        @@config['log-http'] = true
+      opts.on('--[no-]log-http', 'output an Apache-like log') do |log|
+        @@config['log-http'] = log
       end
 
     end.parse!
