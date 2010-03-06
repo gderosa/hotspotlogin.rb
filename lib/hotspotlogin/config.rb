@@ -9,7 +9,14 @@ module HotSpotLogin
 
   def self.config; @@config; end
 
-  def self.config=(h); @@config = h; end
+  def self.config=(h) 
+    @@config = h
+
+    # Now, set the Sinatra App
+    App.set :host,    @@config['listen-address']
+    App.set :port,    @@config['port']
+    App.set :logging, @@config['log-http']
+  end
 
   # Parses command line and configuration file
   def self.config!
@@ -47,11 +54,7 @@ module HotSpotLogin
 
     end.parse!
 
-    # Now, set the Sinatra App
-    App.set :host,    @@config['listen-address']
-    App.set :port,    @@config['port']
-    App.set :logging, @@config['log-http']
-    
+   
   end
     
 end
