@@ -28,8 +28,8 @@ module HotSpotLogin
 
       # Command line switches override configuration file.
 
-      opts.on('--daemon', 'become a daemon') do
-        @@config['daemon'] = true
+      opts.on('--[no-]daemon', 'become a daemon') do |daemonize|
+        @@config['daemon'] = daemonize
       end
 
       opts.on('--log FILE', 'log file (overwrite existing)') do |filename|

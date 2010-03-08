@@ -22,11 +22,11 @@ On the command-line:
 
 ==== Options
 
-  --daemon		daemonize
+  --[no-]daemon		daemonize [by default, executes in foreground]
 
-  --log			log file (ignored when no --daemon)
+  --log			log file (ignored when --no-daemon)
 
-  --pid			pid file (ignored when no --daemon)
+  --pid			pid file (ignored when --no-daemon)
 
   --port 		[default 4990]
 
@@ -50,7 +50,7 @@ See also chilli.conf(5) manual page.
 
 (The MIT License)
 
-Copyright (c) 2010 Guido De Rosa
+Copyright (c) 2010 Guido De Rosa <job*guidoderosa.net>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
