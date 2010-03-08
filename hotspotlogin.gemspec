@@ -1,11 +1,8 @@
-require 'date'
-
 require "#{File.dirname(__FILE__)}/lib/hotspotlogin/constants" 
 
 Gem::Specification.new do |s|
   s.name = %q{hotspotlogin}
   s.version = HotSpotLogin::VERSION
-  s.date = Date.today.to_s
   s.authors = ["Guido De Rosa"]
   s.email = %q{guidoderosa@gmail.com}
   s.summary = %q{Ruby/Sinatra implementation of the login page used with ChilliSpot and friends.}
