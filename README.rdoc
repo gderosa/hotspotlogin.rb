@@ -18,16 +18,15 @@ Installation:
   
 On the command-line:
   
-  $ hotspotlogin_ctl.rb start|stop|run -- [options]
-
-where ‘start’ and ‘stop’ have obvious meanings, while ‘run’ makes the daemon
-run in foreground. Daemons gem documentation for more info.
-
-Or directly
-
   $ hotspotlogin.rb [options]
 
 ==== Options
+
+  --daemon		daemonize
+
+  --log			log file (ignored when no --daemon)
+
+  --pid			pid file (ignored when no --daemon)
 
   --port 		[default 4990]
 
@@ -42,6 +41,10 @@ Or directly
   --conf <FILE>		YAML configuration file, see examples/ 	
 
 See also chilli.conf(5) manual page.
+
+==== Unix Signals
+
+  USR1			sync/update log file (flush buffered I/O) 
   
 == LICENSE:
 

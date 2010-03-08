@@ -11,11 +11,7 @@ module HotSpotLogin
 
   def self.config=(h) 
     @@config = h
-
-    # Now, set the Sinatra App
-    App.set :host,    @@config['listen-address']
-    App.set :port,    @@config['port']
-    App.set :logging, @@config['log-http']
+    config_sinatra!
   end
 
   # Parses command line and configuration file
@@ -31,6 +27,18 @@ module HotSpotLogin
       end
 
       # Command line switches override configuration file.
+
+      opts.on('--daemon', 'become a daemon') do
+        @@config['daemon'] = true
+      end
+
+      opts.on('--log FILE', 'log file (overwrite existing)') do |filename|
+        @@config['log'] = filename
+      end
+
+      opts.on('--pid FILE', 'pid file') do |filename|
+        @@config['pid'] = filename
+      end
 
       opts.on('--uamsecret PASS', 'as in chilli.conf(5)') do |uamsecret|
         @@config['uamsecret'] = uamsecret
@@ -54,7 +62,17 @@ module HotSpotLogin
 
     end.parse!
 
-   
+    self.config_sinatra!
+
+    return @@config
   end
-    
+
+  private  
+
+  def self.config_sinatra!
+    App.set :host,    @@config['listen-address']
+    App.set :port,    @@config['port']
+    App.set :logging, @@config['log-http']
+  end
+
 end

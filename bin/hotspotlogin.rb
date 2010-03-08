@@ -16,7 +16,26 @@ require File.expand_path(
   File.dirname(file) + "/../lib/hotspotlogin"
 )
 
-HotSpotLogin.config! 
+config = HotSpotLogin.config!
 
-HotSpotLogin::App.run!
-
+if config['daemon']
+  pid = fork do
+    if config['log'] 
+      STDOUT.reopen(config['log'], 'a')
+      STDERR.reopen(config['log'], 'a') 
+      Signal.trap('USR1') do
+        STDOUT.flush
+        STDERR.flush
+      end
+    end
+    HotSpotLogin::App.run!
+    FileUtils.rm config['pid'] if config['pid'] and File.exists? config['pid']
+  end
+  if config['pid'] =~ /\S/ 
+    File.open config['pid'], 'w' do |f|
+      f.write pid 
+    end
+  end
+else
+  HotSpotLogin::App.run!
+end
