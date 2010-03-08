@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.files = ["examples/hotspotlogin.conf.yaml", "README.rdoc", "views/layout.erb", "views/hotspotlogin.erb", "views/404.erb", "views/_login_form.erb", "bin/hotspotlogin_ctl.rb", "bin/hotspotlogin.rb", "lib/hotspotlogin.rb", "lib/hotspotlogin/constants.rb", "lib/hotspotlogin/config.rb", "lib/hotspotlogin/app.rb", "lib/hotspotlogin/extensions/string.rb"]
   s.extra_rdoc_files = ["README.rdoc"]
   s.rdoc_options = ["--main", "README.rdoc"]
-  s.executables = ['hotspotlogin.rb', 'hotspotlogin_ctl.rb']
+  #s.executables = ['hotspotlogin.rb', 'hotspotlogin_ctl.rb']
   s.add_dependency 'sinatra'
   s.add_dependency 'daemons'
 end

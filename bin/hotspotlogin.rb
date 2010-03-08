@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-$0 = 'hotspotlogin.rb'
+# Don'use this hack, since it breaks /proc/<pid>/cmdline
+# $0 = 'hotspotlogin.rb'
 
 require 'rubygems'
 require 'sinatra/base'

@@ -16,6 +16,8 @@ module HotSpotLogin
     set :port,    HotSpotLogin.config['port']
     set :logging, HotSpotLogin.config['log-http']
 
+    #set :run,     false
+
     include ERB::Util # for html_escape...
 
     result, titel, headline, bodytext = '', '', '', ''
