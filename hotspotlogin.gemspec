@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = %q{hotspotlogin}
   s.version = HotSpotLogin::VERSION
   s.authors = ["Guido De Rosa"]
-  s.email = %q{guidoderosa@gmail.com}
+  s.email = %q{guido.derosa@vemarsas.it}
   s.summary = %q{Ruby/Sinatra implementation of the login page used with ChilliSpot and friends.}
   s.homepage = %q{http://github.com/gderosa/hotspotlogin.rb}
   s.description = %q{Traditionally, a PHP or Perl/CGI web page has been used to login unauthenticated users to a Network Access Controller like ChilliSpot; this hotspotlogin implementation is based on Ruby and Sinatra (the classy web framework).} 

@@ -1,4 +1,4 @@
-= hotspotlogin.rb
+= hotspotlogin
 
 == DESCRIPTION:
 
@@ -12,13 +12,11 @@ http://github.com/gderosa/hotspotlogin.rb
 
 Installation:
 
-  sudo gem source --add http://rubygems.org
-
   sudo gem install hotspotlogin
   
 On the command-line:
   
-  $ hotspotlogin.rb [options]
+  $ hotspotlogin [options]
 
 ==== Options
 
@@ -50,7 +48,7 @@ See also chilli.conf(5) manual page.
 
 (The MIT License)
 
-Copyright (c) 2010 Guido De Rosa <job*guidoderosa.net>
+Copyright (c) 2010 Guido De Rosa <guido.derosa*vemarsas.it>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
