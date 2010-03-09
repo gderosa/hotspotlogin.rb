@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.summary = %q{Ruby/Sinatra implementation of the login page used with ChilliSpot and friends.}
   s.homepage = %q{http://github.com/gderosa/hotspotlogin.rb}
   s.description = %q{Traditionally, a PHP or Perl/CGI web page has been used to login unauthenticated users to a Network Access Controller like ChilliSpot; this hotspotlogin implementation is based on Ruby and Sinatra (the classy web framework).} 
-  s.files = ["examples/hotspotlogin.conf.yaml", "README.rdoc", "views/layout.erb", "views/hotspotlogin.erb", "views/404.erb", "views/_login_form.erb", "bin/hotspotlogin.rb", "lib/hotspotlogin.rb", "lib/hotspotlogin/constants.rb", "lib/hotspotlogin/config.rb", "lib/hotspotlogin/app.rb", "lib/hotspotlogin/extensions/string.rb"]
+  s.files = ["examples/hotspotlogin.conf.yaml", "README.rdoc", "views/layout.erb", "views/hotspotlogin.erb", "views/404.erb", "views/_login_form.erb", "bin/hotspotlogin", "lib/hotspotlogin.rb", "lib/hotspotlogin/constants.rb", "lib/hotspotlogin/config.rb", "lib/hotspotlogin/app.rb", "lib/hotspotlogin/extensions/string.rb"]
   s.extra_rdoc_files = ["README.rdoc"]
   s.rdoc_options = ["--main", "README.rdoc"]
-  s.executables = ['hotspotlogin.rb'] 
+  s.executables = ['hotspotlogin'] 
   s.add_dependency 'sinatra'
 end
