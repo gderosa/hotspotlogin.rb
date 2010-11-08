@@ -17,6 +17,7 @@ config = HotSpotLogin.config!
 
 if config['daemon']
   pid = fork do
+    Process.setsid
     if config['log'] 
       STDOUT.reopen(config['log'], 'a')
       STDERR.reopen(config['log'], 'a') 
@@ -33,6 +34,7 @@ if config['daemon']
       f.write pid 
     end
   end
+  Process.detach pid
 else # run in foreground
   HotSpotLogin::App.run!
 end
