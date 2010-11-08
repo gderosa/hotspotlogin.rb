@@ -1,0 +1,5 @@
+* 0.1.2 (2010-11-08) 
+  * become session leader when forking/daemonizing
+
+    This is to avoid trapping terminal interrupts from a parent console
+    process, etc.
