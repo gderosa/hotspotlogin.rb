@@ -36,20 +36,6 @@ module HotSpotLogin
       )
     end
 
-    # comments adapted from hotspotlogin.php (included in DaloRADIUS):
-    
-    # possible Cases:
-    # attempt to login                          login=login
-    # 1: Login successful                       res=success
-    # 2: Login failed                           res=failed
-    # 3: Logged out                             res=logoff
-    # 4: Tried to login while already logged in res=already
-    # 5: Not logged in yet                      res=notyet
-    #11: Popup                                  res=popup1
-    #12: Popup                                  res=popup2
-    #13: Popup                                  res=popup3
-    # 0: It was not a form request              res=""
-
     #Read query parameters which we care about
     # params['res']
     # params['challenge']
@@ -122,40 +108,40 @@ module HotSpotLogin
           })
         end
       elsif params['res'] == 'success' 
-        result = 1
+        result = Result::SUCCESS
         titel = 'Logged in to HotSpot'
         headline = 'Logged in to HotSpot'
         bodytext = 'Welcome'
       elsif params['res'] == 'failed' 
-        result = 2
+        result = Result::FAILED
         titel = 'HotSpot Login Failed'
         headline = 'HotSpot Login Failed'
       elsif params['res'] == 'logoff'
-        result = 3
+        result = Result::LOGOFF
         titel = 'Logged out from HotSpot'
         headline = 'Logged out from HotSpot'
       elsif params['res'] == 'already' 
-        result = 4
+        result = Result::ALREADY 
         titel = 'Already logged in to HotSpot'
         headline = 'Already logged in to HotSpot'
       elsif params['res'] == 'notyet'
-        result = 5
+        result = Result::NOTYET
         titel = 'Logged out from HotSpot'
         headline = 'Logged out from HotSpot'
       elsif params['res'] == 'popup1'
-        result = 11
+        result = Result::PopUp::LOGGING_IN
         titel = 'Logging into HotSpot'
         headline = 'Logged in to HotSpot'
       elsif params['res'] == 'popup2'
-        result = 12
+        result = Result::PopUp::LOGGED_IN
         titel = 'Logged in to HotSpot'
         headline = 'Logged in to HotSpot'
       elsif params['res'] == 'popup3'
-        result= 13
+        result= Result::PopUp::LOGGED_OUT
         titel = 'Logged out from HotSpot'
         headline = 'Logged out from HotSpot'
       elsif params['res'] == '' or !params['res'] # not a form request: err!
-        result = 0
+        result = Result::NONE
         titel = 'What do you want here?'
         headline = 'HotSpot Login Failed'
       end

@@ -25,9 +25,15 @@ module HotSpotLogin
     
     # More meaningful constants for popup windows.
     module PopUp
-      LOGGING     = POPUP1
-      LOGGED      = POPUP2
-      LOGGED_OUT  = POPUP3 
+      LOGGING_IN  = POPUP1
+      LOGGED_IN   = POPUP2
+      LOGGED_OUT  = POPUP3
+
+      # convenient aliases
+      LOGGING     = LOGGING_IN 
+      LOGGED      = LOGGED_IN
+      LOGOFF      = LOGGED_OUT
+      LOGOUT      = LOGOFF
     end
   end
    
