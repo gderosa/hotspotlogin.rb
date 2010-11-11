@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'erb'
 require 'pp'
 
+require 'hotspotlogin/constants'
 require 'hotspotlogin/config'
 require 'hotspotlogin/extensions/string'
 
@@ -21,6 +22,12 @@ module HotSpotLogin
     include ERB::Util # for html_escape...
 
     result, titel, headline, bodytext = '', '', '', ''
+
+    before do
+      headers(
+        'X-HotSpotLoginRb-Version' => HotSpotLogin::VERSION
+      )
+    end
 
     # TODO: This is not classy: all that JS code should not be in layout.erb;
     # to avoid failures we have to pass all this de-facto unused variables...
@@ -42,7 +49,7 @@ module HotSpotLogin
       )
     end
 
-    # comments adapted from hotspotlogin.php :
+    # comments adapted from hotspotlogin.php (included in DaloRADIUS):
     
     # possible Cases:
     # attempt to login                          login=login
