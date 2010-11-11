@@ -29,23 +29,10 @@ module HotSpotLogin
       )
     end
 
-    # TODO: This is not classy: all that JS code should not be in layout.erb;
-    # to avoid failures we have to pass all this de-facto unused variables...
-    # Horror  ;-/    
     not_found do # Sinatra doesn't know this ditty ;-)
       erb(
         :"404",
-        :locals => {
-          :titel => 'Not Found',
-          :headline => headline,
-          :bodytext => bodytext,
-          :uamip => params['uamip'],
-          :uamport => params['uamport'],
-          :userurl => params['userurl'],
-          :redirurl => params['redirurl'],
-          :timeleft => params['timeleft'],
-          :result => nil
-        }
+        :layout => false
       )
     end
 

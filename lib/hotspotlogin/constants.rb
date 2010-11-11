@@ -9,7 +9,7 @@ module HotSpotLogin
     'userpassword'      => true # like $userpassword in hotpotlgin.(cgi|php)
   } 
 
-  # corresponding GET parameters are res=success, res=failed etc.
+  # Corresponding GET parameters are res=success, res=failed, res=popup1, etc.
   module Result
     SUCCESS =  1
     FAILED  =  2
@@ -20,6 +20,13 @@ module HotSpotLogin
     POPUP2  = 12
     POPUP3  = 13
     NONE    =  0  # It was not a form request
+    
+    # More meaningful constants for popup windows.
+    module PopUp
+      LOGGING     = POPUP1
+      LOGGED      = POPUP2
+      LOGGED_OUT  = POPUP3 
+    end
   end
    
 end
