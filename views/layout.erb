@@ -8,14 +8,13 @@
     <title><%= titel %></title>
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <script language="JavaScript">
       var blur = 0;
       var starttime = new Date();
       var startclock = starttime.getTime();
       var mytimeleft = 0;
-
+/*
       function doTime() {
         window.setTimeout( "doTime()", 1000 );
         t = new Date();
@@ -45,7 +44,7 @@
           self.status = title;
         }
       }
-
+*/
       function popUp(URL) {
         if (self.name != "chillispot_popup") {
           chillispot_popup = window.open(URL, 'chillispot_popup', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=500,height=375');
@@ -56,9 +55,9 @@
         if (timeleft) {
           mytimeleft = timeleft;
         }
-        if ((result == 1) && (self.name == "chillispot_popup")) {
-          doTime();
-        }
+        //if ((result == 1) && (self.name == "chillispot_popup")) {
+        //  doTime();
+        //}
         if ((result == 1) && (self.name != "chillispot_popup")) {
           chillispot_popup = window.open(URL, 'chillispot_popup', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=500,height=375');
         }
@@ -70,7 +69,7 @@
           chillispot_popup.close();
         }
         if ((result == 12) && (self.name == "chillispot_popup")) {
-          doTime();
+          //doTime();
           if (redirurl) {
             opener.location = redirurl;
           }
@@ -100,7 +99,7 @@
     </script>
   </head>
 
-  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&timeleft=<%= timeleft %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')" onBlur="javascript:doOnBlur($result)">
+  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&timeleft=<%= timeleft %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')" onBlur="javascript:doOnBlur(<%= result %>)">
     <div style='text-align: right; font-style: italic; margin-right: 3em; font-family: sans-serif; font-size:small;'>
       Powered by <a href="http://rubygems.org/gems/hotspotlogin">hotspotlogin.rb</a>
     </div>
