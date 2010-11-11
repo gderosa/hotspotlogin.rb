@@ -72,32 +72,30 @@
     </script>
 
     <script language="JavaScript">
-/*
- // If you use non standard configuration, define your configuration 
- chilliController.host = "10.0.0.1";  // Default is 192.168.182.1
- chilliController.port  = 4003     ; //  Default is 3990
- chilliController.interval = 60    ; // Default is 30 seconds
+// If you use non standard configuration, define your configuration 
+chilliController.host = "<%= uamip %>";
+chilliController.port  = <%= uamport %>; // Default is 3990
+// chilliController.interval = 60    ; // keep default: 30 seconds
   
- // then define event handler functions
- chilliController.onError  = handleErrors;
- chilliController.onUpdate = updateUI ;
+// then define event handler functions
+chilliController.onError  = handleErrors;
+chilliController.onUpdate = updateUI ;
     
- // when the reply is ready, this handler function is called
- function updateUI( cmd ) {
+// when the reply is ready, this handler function is called
+function updateUI( cmd ) {
+  <% if result == HotSpotLogin::Result::SUCCESS %>
+    document.getElementById('status-window').innerHTML = ('Your current state is = ' + chilliController.clientState + '\n' + 'Session time = ' + chilliController.accounting.sessionTime + '\n');
+  <% end %>
+}
   
-    alert ( ‘You called the method' + cmd + '\n Your current state is =’ + chilliController.clientState ) ;
-  
- }
-  
- // If an error occurs, this handler will be called instead
- function handleErrors ( code ) {
-  
-   alert ( 'The last contact with the Controller failed. Error code =' + code );
-     
- }
- //  finally, get current state
- chilliController.refresh() ;
-*/      
+// If an error occurs, this handler will be called instead
+function handleErrors ( code ) {
+
+ alert ( 'The last contact with the Controller failed. Error code =' + code );
+   
+}
+//  finally, get current state
+chilliController.refresh() ;
     </script>
 
   </head>
