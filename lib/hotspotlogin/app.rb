@@ -82,7 +82,7 @@ module HotSpotLogin
       redirect '/hotspotlogin'
     end
     
-    get '/hotspotlogin' do 
+    get '/hotspotlogin/?' do 
 
       if HotSpotLogin.config['uamsecret'] and
           HotSpotLogin.config['uamsecret'].length > 0
