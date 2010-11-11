@@ -22,7 +22,7 @@ module HotSpotLogin
 
     result, titel, headline, bodytext = '', '', '', ''
 
-    # TODO: This is not classy: all that JS code should not be layout.erb;
+    # TODO: This is not classy: all that JS code should not be in layout.erb;
     # to avoid failures we have to pass all this de-facto unused variables...
     # Horror  ;-/    
     not_found do # Sinatra doesn't know this ditty ;-)
@@ -110,13 +110,13 @@ module HotSpotLogin
         headline = 'Logging in to HotSpot'
 
         #if uamsecret and userpassword
-        if userpassword
+        if userpassword # PAP
           headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&password=#{pappassword}&userurl=#{params['userurl']}" 
             # NOTE: no userurl passed... why? 
             # NOTE: if you pass it, nothing changes
           })
-        else
+        else # CHAP
           headers({
             'Refresh' => "0;url=http://#{params['uamip']}:#{params['uamport']}/logon?username=#{params['UserName']}&response=#{response}&userurl=#{params['userurl']}"
           })
