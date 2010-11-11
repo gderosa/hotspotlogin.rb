@@ -75,8 +75,14 @@ module HotSpotLogin
     # params['redirurl']
     
 
-    # Matches '/', '/hotspotlogin' and '/hotspotlogin.rb'
-    get %r{^/(hotspotlogin(\.rb)?/?)?$} do 
+    # All paths should be under /hotspotlogin, to allow easier 
+    # setup of "conditional" HTTPS reverse proxies
+    
+    get '/' do
+      redirect '/hotspotlogin'
+    end
+    
+    get '/hotspotlogin' do 
 
       if HotSpotLogin.config['uamsecret'] and
           HotSpotLogin.config['uamsecret'].length > 0
