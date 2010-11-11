@@ -9,6 +9,8 @@ module HotSpotLogin
     'userpassword'      => true # like $userpassword in hotpotlgin.(cgi|php)
   } 
 
+  ROOTDIR = File.join(File.dirname(File.expand_path __FILE__), '../..')
+
   # Corresponding GET parameters are res=success, res=failed, res=popup1, etc.
   module Result
     SUCCESS =  1
