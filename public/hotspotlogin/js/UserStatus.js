@@ -61,6 +61,18 @@ function showUserStatus(h) {
       chilliController.formatTime(
         chilliController.accounting.sessionTime, '0')
     );
+    var download_bytes = 
+      chilliController.accounting.inputOctets +
+      Math.pow(2, 32) * chilliController.accounting.inputGigawords; 
+    var upload_bytes = 
+      chilliController.accounting.outputOctets +
+      Math.pow(2, 32) * chilliController.accounting.outputGigawords;    
+    document.getElementById('download').innerHTML = (
+      chilliController.formatBytes(download_bytes, 0)
+    );
+    document.getElementById('upload').innerHTML = (
+      chilliController.formatBytes(upload_bytes, 0)
+    );
     document.getElementById('interval').innerHTML = (
       chilliController.formatTime( chilliController.interval )
     );
