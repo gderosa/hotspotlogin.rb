@@ -1,0 +1,20 @@
+h1 {
+  text-align: center;
+}
+
+#status-container {
+  text-align: center;
+  border: 1px blue solid;
+  margin: 1em;
+}
+#status-table th {
+  text-align: left;
+}
+#status-table td {
+  text-align: right;
+}
+#status-table th.optinfo {
+  font-size: smaller;
+  font-style: italic;
+}
+

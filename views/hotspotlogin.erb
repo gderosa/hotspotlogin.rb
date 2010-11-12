@@ -32,7 +32,7 @@
 <% end %>
 
 <% if status_window?(result) %>
-  <div id="status-container" style="border: 1px blue solid;">
+  <div id="status-container">
     <table id="status-table">
       <tbody>
         <tr>
@@ -47,7 +47,7 @@
           <td id="sessionTime"></td>
         </tr>
         <tr>
-          <th scope="row" style="font-style:italic;">Updated every</th>
+          <th scope="row" class="optinfo">Automatically updated every</th>
           <td id="interval"></td>
         </tr>
       </tbody>
