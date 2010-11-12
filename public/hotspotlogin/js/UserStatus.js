@@ -17,6 +17,8 @@ function showUserStatus(h) {
       case chilliController.stateCodes.AUTH:
         return 'Authorized';
       case chilliController.stateCodes.AUTH_PENDING:
+        return 'Authorization Pending';
+      case chilliController.stateCodes.AUTH_SPLASH:
         return 'AUTH_SPLASH'; // What does it mean?
       default:
         return code;
