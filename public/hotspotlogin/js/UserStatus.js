@@ -51,6 +51,9 @@ function showUserStatus(h) {
       'Session time = ' + chilliController.accounting.sessionTime + '\n'
     );
     */
+    document.getElementById('userName').innerHTML = (
+        chilliController.session.userName
+    );
     document.getElementById('clientState').innerHTML = (
       formatStateCode(chilliController.clientState) 
     );
