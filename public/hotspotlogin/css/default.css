@@ -4,6 +4,14 @@ h1 {
   font-size: 170%;
 }
 
+#powered-by {
+  text-align: right; 
+  font-style: italic; 
+  margin-right: 3em; 
+  font-family: sans-serif; 
+  font-size:small;
+}
+
 #status-container {
   text-align: center;
   border: 1px blue solid;
