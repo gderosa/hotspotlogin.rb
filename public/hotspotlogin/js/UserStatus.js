@@ -9,7 +9,10 @@ function showUserStatus(h) {
   if (h.uamport)
     chilliController.port = h.uamport;  // default: 3990 
 
-  // chilliController.interval = 60    ; // keep default: 30 seconds
+  // We choose 5 minutes because is the default interval of Chilli->Radius
+  // accounting updates, and looks reasonable for busy sites (avoiding too
+  // much load on the network infrastructure and servers) .
+  chilliController.interval = 300;      // default: 30 seconds
 
   // then define event handler functions
   chilliController.onError  = handleErrors;
@@ -17,12 +20,25 @@ function showUserStatus(h) {
 
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
+    /*
     document.getElementById('status-window').innerHTML = (
       'Command = ' + cmd + '\n' +
       'Updated every ' + chilliController.interval + ' seconds\n'         +
       'Your current state is = ' + chilliController.clientState + '\n'    +
       'Session time = ' + chilliController.accounting.sessionTime + '\n'
     );
+    */
+    document.getElementById('clientState').innerHTML = (
+      chilliController.clientState
+    );
+    document.getElementById('sessionTime').innerHTML = (
+      chilliController.formatTime(
+        chilliController.accounting.sessionTime, '0')
+    );
+    document.getElementById('interval').innerHTML = (
+      chilliController.formatTime( chilliController.interval )
+    );
+
   }
 
   // If an error occurs, this handler will be called instead

@@ -32,7 +32,23 @@
 <% end %>
 
 <% if status_window?(result) %>
-  <pre id="status-window" style="border: 1px blue solid;">
-  </pre>
+  <div id="status-container" style="border: 1px blue solid;">
+    <table id="status-table">
+      <tbody>
+        <tr>
+          <th scope="row">Client State</th>
+          <td id="clientState"></td>
+        </tr>
+        <tr>
+          <th scope="row">Session Time</th>
+          <td id="sessionTime"></td>
+        </tr>
+        <tr>
+          <th scope="row">Updated every</th>
+          <td id="interval"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 <% end %>
 
