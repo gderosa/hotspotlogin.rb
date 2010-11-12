@@ -43,14 +43,6 @@ function showUserStatus(h) {
 
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
-    /*
-    document.getElementById('status-window').innerHTML = (
-      'Command = ' + cmd + '\n' +
-      'Updated every ' + chilliController.interval + ' seconds\n'         +
-      'Your current state is = ' + chilliController.clientState + '\n'    +
-      'Session time = ' + chilliController.accounting.sessionTime + '\n'
-    );
-    */
     document.getElementById('userName').innerHTML = (
         chilliController.session.userName
     );
