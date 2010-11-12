@@ -85,7 +85,11 @@ chilliController.onUpdate = updateUI ;
     
 // when the reply is ready, this handler function is called
 function updateUI( cmd ) {
-  document.getElementById('status-window').innerHTML = ('Your current state is = ' + chilliController.clientState + '\n' + 'Session time = ' + chilliController.accounting.sessionTime + '\n');
+  document.getElementById('status-window').innerHTML = (
+    'Updated every ' + chilliController.interval + ' seconds\n'         +
+    'Your current state is = ' + chilliController.clientState + '\n'    + 
+    'Session time = ' + chilliController.accounting.sessionTime + '\n'  + 
+  );
 }
   
 // If an error occurs, this handler will be called instead
