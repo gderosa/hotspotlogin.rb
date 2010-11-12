@@ -1,7 +1,27 @@
-// strongly based on: http://www.coova.org/CoovaChilli/JSON
-// adapted by Guido De Rosa <guido.derosa@vemarsas.it>
+// requires ChilliController.js
+// See: http://www.coova.org/CoovaChilli/JSON
+//
+// Copyright(c) 2010, Guido De Rosa <guido.derosa@vemarsas.it>
+// License: MIT
 
 function showUserStatus(h) {
+
+  // Utility functions and objects
+  //
+  function formatStateCode(code) {
+    switch(code) {
+      case chilliController.stateCodes.UNKNOWN:
+        return 'Unknown';
+      case chilliController.stateCodes.NOT_AUTH:
+        return 'Not Authorized';
+      case chilliController.stateCodes.AUTH:
+        return 'Authorized';
+      case chilliController.stateCodes.AUTH_PENDING:
+        return 'AUTH_SPLASH'; // What does it mean?
+      default:
+        return code;
+    }
+  }
 
   // If you use non standard configuration, define your configuration
   if (h.uamip)
@@ -18,6 +38,9 @@ function showUserStatus(h) {
   chilliController.onError  = handleErrors;
   chilliController.onUpdate = updateUI ;
 
+  //  finally, get current state
+  chilliController.refresh() ;
+
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
     /*
@@ -29,7 +52,7 @@ function showUserStatus(h) {
     );
     */
     document.getElementById('clientState').innerHTML = (
-      chilliController.clientState
+      formatStateCode(chilliController.clientState) 
     );
     document.getElementById('sessionTime').innerHTML = (
       chilliController.formatTime(
@@ -43,10 +66,9 @@ function showUserStatus(h) {
 
   // If an error occurs, this handler will be called instead
   function handleErrors ( code ) {
-
-   alert ( 'The last contact with the Controller failed. Error code =' + code );
-
+    alert('The last contact with the Controller failed. Error code =' + code);
   }
-  //  finally, get current state
-  chilliController.refresh() ;
+
+
 }
+
