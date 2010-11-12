@@ -32,6 +32,7 @@ module HotSpotLogin
       # convenient aliases
       LOGGING     = LOGGING_IN 
       LOGGED      = LOGGED_IN
+      SUCCESS     = LOGGED_IN
       LOGOFF      = LOGGED_OUT
       LOGOUT      = LOGOFF
     end

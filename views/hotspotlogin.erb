@@ -1,3 +1,7 @@
+<%
+  require 'hotspotlogin/app/helpers'
+%>
+
 <h1><%= titel %></h1>
 <% if [1, 4, 12].include? result %>
   <div style="text-align: center;">
@@ -5,11 +9,6 @@
       Logout
     </a>
   </div>
-
-  <pre id="status-window" style="border: 1px blue solid;">
-
-  </pre>
-
 <% elsif [2, 5].include? result %>
   <%= 
     erb(
@@ -29,7 +28,12 @@
   <p>Login must be performed through ChilliSpot daemon!</p>
 <% end %>
 
-
 <% if params['reply'] %>
   <div style="text-align: center;"><%= params['reply'] %></div>
 <% end %>
+
+<% if status_window?(result) %>
+  <pre id="status-window" style="border: 1px blue solid;">
+  </pre>
+<% end %>
+

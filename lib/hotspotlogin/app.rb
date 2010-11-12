@@ -36,6 +36,8 @@ module HotSpotLogin
       )
     end
 
+    require 'hotspotlogin/app/helpers'
+
     #Read query parameters which we care about
     # params['res']
     # params['challenge']
