@@ -36,7 +36,7 @@ function showUserStatus(h) {
   // We choose 5 minutes because is the default interval of Chilli->Radius
   // accounting updates, and looks reasonable for busy sites (avoiding too
   // much load on the network infrastructure and servers) .
-  chilliController.interval = 300;      // default: 30 seconds
+  chilliController.interval = h.updateInterval || 300;  // default = 30
 
   // then define event handler functions
   chilliController.onError  = handleErrors;
@@ -46,17 +46,19 @@ function showUserStatus(h) {
   chilliController.refresh() ;
 
   function updateHeadings(clientState) {
+    txt = null;
     switch(clientState) {
       case chilliController.stateCodes.NOT_AUTH:
-        document.getElementsByTagName('TITLE')[0].innerHTML =
-        document.getElementById('headline').innerHTML       = 
-            'Logged out from HotSpot';
+        txt = 'Logged out from HotSpot';
         break;
       case chilliController.stateCodes.AUTH:
-        document.getElementsByTagName('TITLE')[0].innerHTML =
-        document.getElementById('headline').innerHTML       =
-            'Logged in to HotSpot';
+        txt = 'Logged in to HotSpot';
         break;
+    }
+    if (txt) {
+      document.title = txt;
+      if (document.getElementById('headline')) 
+        document.getElementById('headline').innerHTML = txt;
     }
   }
 
