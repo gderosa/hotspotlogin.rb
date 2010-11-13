@@ -25,9 +25,11 @@ function showUserStatus(h) {
     }
   }
 
+  // chilliController.debug = true;
+
   // If you use non standard configuration, define your configuration
   if (h.uamip)
-    chilliController.host = h.uamip;    // default: ?
+    chilliController.host = h.uamip;    // default: 192.168.182.1
   if (h.uamport)
     chilliController.port = h.uamport;  // default: 3990 
 
@@ -40,7 +42,7 @@ function showUserStatus(h) {
   chilliController.onError  = handleErrors;
   chilliController.onUpdate = updateUI ;
 
-  //  finally, get current state
+  // get current state
   chilliController.refresh() ;
 
   function updateHeadings(clientState) {
