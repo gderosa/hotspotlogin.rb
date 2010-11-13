@@ -1,8 +1,31 @@
-// requires ChilliController.js
+// requires ChilliLibrary.js
 // See: http://www.coova.org/CoovaChilli/JSON
 //
 // Copyright(c) 2010, Guido De Rosa <guido.derosa@vemarsas.it>
 // License: MIT
+
+chilliController.timeLeft = function() {
+  return Math.max(
+    (
+      chilliController.session.sessionTimeout -
+      chilliController.accounting.sessionTime
+    ),
+    0
+  );
+}
+
+chilliController.scheduleTimeoutAutorefresh = function() {
+  if (chilliController.timeLeft() && !chilliController.timeoutTimer) {
+    chilliController.timeoutTimer = {
+      preLogoff:  setTimeout(
+        'chilliController.refresh()', 1000 * chilliController.timeLeft()
+      ),
+      atLogoff:   setTimeout( // 3 seconds delay looks fair
+        'chilliController.refresh()', 1000 * (3 + chilliController.timeLeft())
+      )
+    }
+  }
+}
 
 function showUserStatus(h) {
 
@@ -24,7 +47,7 @@ function showUserStatus(h) {
         return code;
     }
   }
-
+  
   // chilliController.debug = true;
 
   // If you use non standard configuration, define your configuration
@@ -44,6 +67,10 @@ function showUserStatus(h) {
 
   // get current state
   chilliController.refresh() ;
+
+  // schedule a refresh if there's a sessionTimeout
+  ms = chilliController.timeLeft() * 1000;
+  setTimeout('chilliController.refresh()', ms);
 
   function updateHeadings(clientState) {
     txt = null;
@@ -76,15 +103,8 @@ function showUserStatus(h) {
         chilliController.accounting.sessionTime, '0')
     );
     if (chilliController.session.sessionTimeout) {
-      var timeLeft = Math.max(
-        (
-          chilliController.session.sessionTimeout -
-          chilliController.accounting.sessionTime
-        ),
-          0 
-      )
       document.getElementById('timeLeft').innerHTML = (
-        chilliController.formatTime(timeLeft, 0) 
+        chilliController.formatTime(chilliController.timeLeft(), 0) 
       );
     } else {
       document.getElementById('timeLeft').innerHTML = ''
@@ -104,6 +124,9 @@ function showUserStatus(h) {
     document.getElementById('interval').innerHTML = (
       chilliController.formatTime(chilliController.interval, 0)
     );
+    
+    // (re)-schedule a refresh at sessionTimeout
+    chilliController.scheduleTimeoutAutorefresh();
   }
 
   // If an error occurs, this handler will be called instead
