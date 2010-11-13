@@ -55,6 +55,20 @@ function showUserStatus(h) {
       chilliController.formatTime(
         chilliController.accounting.sessionTime, '0')
     );
+    if (chilliController.session.sessionTimeout) {
+      var timeLeft = Math.max(
+        (
+          chilliController.session.sessionTimeout -
+          chilliController.accounting.sessionTime
+        ),
+          0 
+      )
+      document.getElementById('timeLeft').innerHTML = (
+        chilliController.formatTime(timeLeft, 0) 
+      );
+    } else {
+      document.getElementById('timeLeft').innerHTML = ''
+    }
     var download_bytes = 
       chilliController.accounting.inputOctets +
       Math.pow(2, 32) * chilliController.accounting.inputGigawords; 
@@ -68,9 +82,8 @@ function showUserStatus(h) {
       chilliController.formatBytes(upload_bytes, 0)
     );
     document.getElementById('interval').innerHTML = (
-      chilliController.formatTime( chilliController.interval )
+      chilliController.formatTime(chilliController.interval, 0)
     );
-
   }
 
   // If an error occurs, this handler will be called instead
