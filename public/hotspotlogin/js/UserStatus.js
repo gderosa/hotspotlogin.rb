@@ -43,8 +43,24 @@ function showUserStatus(h) {
   //  finally, get current state
   chilliController.refresh() ;
 
+  function updateHeadings(clientState) {
+    switch(clientState) {
+      case chilliController.stateCodes.NOT_AUTH:
+        document.getElementsByTagName('TITLE')[0].innerHTML =
+        document.getElementById('headline').innerHTML       = 
+            'Logged out from HotSpot';
+        break;
+      case chilliController.stateCodes.AUTH:
+        document.getElementsByTagName('TITLE')[0].innerHTML =
+        document.getElementById('headline').innerHTML       =
+            'Logged in to HotSpot';
+        break;
+    }
+  }
+
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
+    updateHeadings(chilliController.clientState);
     document.getElementById('userName').innerHTML = (
         chilliController.session.userName
     );
