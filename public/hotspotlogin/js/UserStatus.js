@@ -1,7 +1,7 @@
-// requiiiiires ChilliLibrary.js
+// Requires ChilliLibrary.js
 // See: http://www.coova.org/CoovaChilli/JSON
 //
-// Copyright(c) 2010, Guido De Rosa <guido.derosa@vemarsas.it>
+// Copyright(c) 2010, Guido De Rosa (guido.derosa at vemarsas.it) . 
 // License: MIT
 
 chilliController.sessionTimeLeft = function() {
