@@ -96,15 +96,15 @@ function showUserStatus(h) {
   }
 
   function updateLinks(clientState) {
+    var e = document.getElementById('logInLogOut');
     switch(clientState) {
       case chilliController.stateCodes.NOT_AUTH:
-        document.getElementById('logInLogOut').innerHTML = 
-            '<a href="' + loginURL(chilliController) + '">' + 'Login</a>';
+        e.setAttribute('href', loginURL());
+        e.innerHTML = 'Login';
         break;
       case chilliController.stateCodes.AUTH:
-        var e = document.getElementById('logInLogOut');
         e.setAttribute('href', '#');
-        e.setAttribute('onClick', 'javascript:chilliController.logoff();');
+        e.onclick = chilliController.logoff; 
         e.innerHTML = 'Logout';
         break;
     }
