@@ -1,10 +1,10 @@
-// requires ChilliLibrary.js
+// requiiiiires ChilliLibrary.js
 // See: http://www.coova.org/CoovaChilli/JSON
 //
 // Copyright(c) 2010, Guido De Rosa <guido.derosa@vemarsas.it>
 // License: MIT
 
-chilliController.timeLeft = function() {
+chilliController.sessionTimeLeft = function() {
   return Math.max(
     (
       chilliController.session.sessionTimeout -
@@ -13,15 +13,41 @@ chilliController.timeLeft = function() {
     0
   );
 }
+chilliController.idleTimeLeft = function() {
+  return Math.max(
+    (
+      chilliController.session.idleTimeout -
+      chilliController.accounting.idleTime
+    ),
+    0
+  );
+}
 
-chilliController.scheduleTimeoutAutorefresh = function() {
-  if (chilliController.timeLeft() && !chilliController.timeoutTimer) {
-    chilliController.timeoutTimer = {
+chilliController.scheduleSessionTimeoutAutorefresh = function() {
+  if (chilliController.sessionTimeLeft() && !chilliController.sessionTimeoutTimer) {
+    chilliController.sessionTimeoutTimer = {
       preLogoff:  setTimeout(
-        'chilliController.refresh()', 1000 * chilliController.timeLeft()
+        'chilliController.refresh()', 1000 * chilliController.sessionTimeLeft()
       ),
       atLogoff:   setTimeout( // 3 seconds delay looks fair
-        'chilliController.refresh()', 1000 * (3 + chilliController.timeLeft())
+        'chilliController.refresh()', 1000 * (3 + chilliController.sessionTimeLeft())
+      )
+    }
+  }
+}
+
+chilliController.scheduleIdleTimeoutAutorefresh = function() {
+  if (chilliController.idleTimeLeft()) {
+    if (chilliController.idleTimeoutTimer) {
+      clearTimeout(chilliController.idleTimeoutTimer.preLogoff);
+      clearTimeout(chilliController.idleTimeoutTimer.atLogoff);
+    }  
+    chilliController.idleTimeoutTimer = {
+      preLogoff:  setTimeout(
+        'chilliController.refresh()', 1000 * chilliController.idleTimeLeft()
+      ),
+      atLogoff:   setTimeout( // 3 seconds delay looks fair
+        'chilliController.refresh()', 1000 * (3 + chilliController.idleTimeLeft())
       )
     }
   }
@@ -74,10 +100,6 @@ function showUserStatus(h) {
   // get current state
   chilliController.refresh() ;
 
-  // schedule a refresh if there's a sessionTimeout
-  ms = chilliController.timeLeft() * 1000;
-  setTimeout('chilliController.refresh()', ms);
-
   function updateHeadings(clientState) {
     txt = null;
     switch(clientState) {
@@ -120,16 +142,26 @@ function showUserStatus(h) {
     document.getElementById('clientState').innerHTML = (
       formatStateCode(chilliController.clientState) 
     );
+    //if (chilliController.terminateCause) {
+    //  document.getElementById('terminateCause').innerHTML = (
+    //    chilliController.terminateCause
+    //  )
+    //}
     document.getElementById('sessionTime').innerHTML = (
       chilliController.formatTime(
         chilliController.accounting.sessionTime, '0')
     );
     if (chilliController.session.sessionTimeout) {
-      document.getElementById('timeLeft').innerHTML = (
-        chilliController.formatTime(chilliController.timeLeft(), 0) 
+      document.getElementById('sessionTimeLeft').innerHTML = (
+        chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
       );
     } else {
-      document.getElementById('timeLeft').innerHTML = ''
+      document.getElementById('sessionTimeLeft').innerHTML = ''
+    }
+    if (chilliController.session.idleTimeout) {
+      document.getElementById('idleTimeout').innerHTML = (
+          chilliController.formatTime(chilliController.session.idleTimeout)
+      );
     }
     var download_bytes = 
       chilliController.accounting.inputOctets +
@@ -147,8 +179,8 @@ function showUserStatus(h) {
       chilliController.formatTime(chilliController.interval, 0)
     );
     
-    // (re)-schedule a refresh at sessionTimeout
-    chilliController.scheduleTimeoutAutorefresh();
+    chilliController.scheduleSessionTimeoutAutorefresh();
+    chilliController.scheduleIdleTimeoutAutorefresh();
   }
 
   // If an error occurs, this handler will be called instead
