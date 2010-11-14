@@ -96,9 +96,18 @@ function showUserStatus(h) {
   }
 
   function updateLinks(clientState) {
-    if (clientState == chilliController.stateCodes.NOT_AUTH) 
-      document.getElementById('logInLogOut').innerHTML = 
-          '<a href="' + loginURL(chilliController) + '">' + 'Login</a>';
+    switch(clientState) {
+      case chilliController.stateCodes.NOT_AUTH:
+        document.getElementById('logInLogOut').innerHTML = 
+            '<a href="' + loginURL(chilliController) + '">' + 'Login</a>';
+        break;
+      case chilliController.stateCodes.AUTH:
+        var e = document.getElementById('logInLogOut');
+        e.setAttribute('href', '#');
+        e.setAttribute('onClick', 'javascript:chilliController.logoff();');
+        e.innerHTML = 'Logout';
+        break;
+    }
   }
 
   // when the reply is ready, this handler function is called
