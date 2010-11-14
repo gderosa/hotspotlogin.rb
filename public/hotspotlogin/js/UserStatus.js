@@ -47,6 +47,12 @@ function showUserStatus(h) {
         return code;
     }
   }
+
+  // CoovaChilli JSON interface only supports CHAP... don't use JSON to login.
+  // TODO: support https://
+  function loginURL() {
+    return 'http://' + h.uamip + ':' + h.uamport;
+  }
   
   // chilliController.debug = true;
 
@@ -89,9 +95,16 @@ function showUserStatus(h) {
     }
   }
 
+  function updateLinks(clientState) {
+    if (clientState == chilliController.stateCodes.NOT_AUTH) 
+      document.getElementById('logInLogOut').innerHTML = 
+          '<a href="' + loginURL(chilliController) + '">' + 'Login</a>';
+  }
+
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
-    updateHeadings(chilliController.clientState);
+    updateHeadings( chilliController.clientState);
+    updateLinks(    chilliController.clientState);
     document.getElementById('userName').innerHTML = (
         chilliController.session.userName
     );
