@@ -100,6 +100,15 @@ function showUserStatus(h) {
   // get current state
   chilliController.refresh() ;
 
+  initTable();
+
+  function initTable() {
+    // show them when/if we need them; but do not hide them when 
+    // session terminates
+    document.getElementById('sessionTimeLeft:row').style.display  = 'none';
+    document.getElementById('idleTimeout:row').style.display      = 'none';
+  }
+
   function updateHeadings(clientState) {
     txt = null;
     switch(clientState) {
@@ -155,13 +164,17 @@ function showUserStatus(h) {
       document.getElementById('sessionTimeLeft').innerHTML = (
         chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
       );
+      document.getElementById('sessionTimeLeft:row').style.display = 'table-row';
     } else {
       document.getElementById('sessionTimeLeft').innerHTML = ''
     }
     if (chilliController.session.idleTimeout) {
       document.getElementById('idleTimeout').innerHTML = (
+          chilliController.formatTime(chilliController.accounting.idleTime) +
+          ' / '                                                             +
           chilliController.formatTime(chilliController.session.idleTimeout)
       );
+      document.getElementById('idleTimeout:row').style.display = 'table-row';
     }
     var download_bytes = 
       chilliController.accounting.inputOctets +

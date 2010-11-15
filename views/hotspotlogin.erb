@@ -31,38 +31,42 @@
   <div id="status-container">
     <table id="status-table">
       <tbody>
-        <tr>
+        <tr id="userName:row">
           <th scope="row">Username</th>
           <td id="userName"></td>
-        <tr>
+        <tr id="clientState:row">
           <th scope="row">Client State</th>
           <td id="clientState"></td>
         </tr>
+        <!-- 
+          Sorry, CoovaChilli JSON interface does not support this, 
+          probably for good reasons...
+        -->
         <!-- <tr>
           <th scope="row">Terminate Cause</th>
           <td id="terminateCause"></td>
         </tr> -->
-        <tr>
+        <tr id="sessionTime:row">
           <th scope="row">Session Time</th>
           <td id="sessionTime"></td>
         </tr>
-        <tr>
+        <tr id="sessionTimeLeft:row">
           <th scope="row">Session Time Left</th>
           <td id="sessionTimeLeft"></th>
         </tr>
-        <tr>
-          <th scope="row">Idle Timeout</th>
+        <tr id="idleTimeout:row">
+          <th scope="row">Idle Time/Timeout</th>
           <td id="idleTimeout"></th>
         </tr>
-        <tr>
+        <tr id="download:row">
           <th scope="row">Download Traffic</th>
           <td id="download"></td>
         </tr>
-        <tr>
+        <tr id="upload:row">
           <th scope="row">Upload Traffic</th>
           <td id="upload"></td>
         </tr>
-        <tr>
+        <tr id="interval:row">
           <th scope="row" class="optinfo">Automatically updated every</th>
           <td id="interval"></td>
         </tr>
