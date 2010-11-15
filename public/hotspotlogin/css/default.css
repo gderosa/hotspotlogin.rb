@@ -1,14 +1,16 @@
 h1, h2 {
   text-align: center;
   font-family: sans-serif;
+  margin: 0.1ex 0;
 }
 
 h1 {
-  font-size: 170%;
+  font-size: 160%;
 }
 
 h2 {
-  font-size: 150%;
+  font-size: 135%;
+  font-style: italic;
 }
 
 #powered-by {
@@ -21,8 +23,14 @@ h2 {
 
 #logo-container {
   text-align: center;
+  margin: 0 0;
 }
-
+#form-container {
+  text-align: center;
+}
+#form-container th {
+  text-align: left;
+}
 #status-container {
   text-align: center;
   border: 1px blue solid;

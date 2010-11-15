@@ -24,12 +24,14 @@
     <a href="#" onClick="javascript:chilliController.refresh();">Refresh</a>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
-  <%= 
-    erb(
-      :_login_form,
-      :layout => false
-    )  
-  %>
+  <div id="form-container">
+    <%= 
+      erb(
+        :_login_form,
+        :layout => false
+      )  
+    %>
+  </div>
 <% elsif result == 11 %>
   <p>Please wait.. </p> <!-- popup1 -->
 <% elsif result == 0 %>
