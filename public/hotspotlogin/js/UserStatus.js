@@ -91,7 +91,7 @@ function showUserStatus(h) {
   // We choose 5 minutes because is the default interval of Chilli->Radius
   // accounting updates, and looks reasonable for busy sites (avoiding too
   // much load on the network infrastructure and servers) .
-  chilliController.interval = h.updateInterval || 300;  // default = 30
+  chilliController.interval = (h.interval || 300);  // default = 30
 
   // then define event handler functions
   chilliController.onError  = handleErrors;

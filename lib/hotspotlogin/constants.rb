@@ -6,7 +6,8 @@ module HotSpotLogin
     'listen-address'    => '0.0.0.0',
     'port'              => 4990,
     'log-http'          => false,
-    'userpassword'      => true # like $userpassword in hotpotlgin.(cgi|php)
+    'userpassword'      => true, # like $userpassword in hotpotlgin.(cgi|php)
+    'interval'          => 300
   } 
 
   ROOTDIR = File.join(File.dirname(File.expand_path __FILE__), '../..')

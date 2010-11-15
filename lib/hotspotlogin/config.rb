@@ -27,6 +27,10 @@ module HotSpotLogin
       end
 
       # Command line switches override configuration file.
+      
+      opts.on('--interval SECONDS', 'autorefresh accounting/session data every SECONDS seconds') do |seconds|
+        @@config['interval'] = seconds
+      end
 
       opts.on('--[no-]daemon', 'become a daemon') do |daemonize|
         @@config['daemon'] = daemonize

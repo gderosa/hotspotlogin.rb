@@ -4,3 +4,4 @@ port: 4991
 uamsecret: uampass
 userpassword: false
 log-http: true
+interval: 300

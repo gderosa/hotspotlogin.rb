@@ -160,6 +160,7 @@ module HotSpotLogin
           #:redirurl => params['redirurl'],
           :redirurl => params['userurl'],
           :timeleft => params['timeleft'],
+          :interval => HotSpotLogin.config['interval'],
           :result => result
         }
       )
