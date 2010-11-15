@@ -75,9 +75,9 @@ function showUserStatus(h) {
   }
 
   // CoovaChilli JSON interface only supports CHAP... don't use JSON to login.
-  // TODO: support https://
   function loginURL() {
-    return 'http://' + h.uamip + ':' + h.uamport;
+    var schema = chilliController.ssl ? 'https' : 'http';
+    return schema + '://' + h.uamip + ':' + h.uamport;
   }
   
   // chilliController.debug = true;
