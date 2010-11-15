@@ -19,6 +19,10 @@ h2 {
   font-size:small;
 }
 
+#logo-container {
+  text-align: center;
+}
+
 #status-container {
   text-align: center;
   border: 1px blue solid;

@@ -69,9 +69,34 @@ module HotSpotLogin
     get '/' do
       redirect '/hotspotlogin'
     end
+
+    get '/hotspotlogin/favicon.ico' do
+      if HotSpotLogin.config['favicon'] 
+        if File.file? HotSpotLogin.config['favicon']
+          send_file HotSpotLogin.config['favicon']
+        else
+          not_found
+        end
+      else
+        not_found
+      end
+    end
+
+    get '/hotspotlogin/logo.:ext' do
+      if HotSpotLogin.config['logo'] 
+        if 
+            File.file?(   HotSpotLogin.config['logo'])                      and
+            File.extname( HotSpotLogin.config['logo']) == ".#{params[:ext]}"
+          send_file HotSpotLogin.config['logo']
+        else
+          not_found
+        end
+      else
+        not_found
+      end
+    end
     
     get '/hotspotlogin/?' do 
-
       if HotSpotLogin.config['uamsecret'] and
           HotSpotLogin.config['uamsecret'].length > 0
         uamsecret = HotSpotLogin.config['uamsecret']
@@ -151,17 +176,22 @@ module HotSpotLogin
       erb(
         :hotspotlogin,
         :locals => {
-          :titel => titel,
-          :headline => headline,
-          :bodytext => bodytext,
-          :uamip => params['uamip'],
-          :uamport => params['uamport'],
-          :userurl => params['userurl'],
-          #:redirurl => params['redirurl'],
-          :redirurl => params['userurl'],
-          :timeleft => params['timeleft'],
-          :interval => HotSpotLogin.config['interval'],
-          :result => result
+          :titel            => titel,
+          :headline         => headline, # like 'Logged out from HotSpot'
+          :bodytext         => bodytext,
+          :uamip            => params['uamip'],
+          :uamport          => params['uamport'],
+          :userurl          => params['userurl'],
+          #:redirurl        => params['redirurl'],
+          :redirurl         => params['userurl'],
+          :timeleft        => params['timeleft'], # legacy... 
+          :interval         => HotSpotLogin.config['interval'],
+          :custom_headline  => 
+              HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
+          :header           => HotSpotLogin.config['header'],
+          :footer           => HotSpotLogin.config['footer'],
+          :logoext          => File.extname(HotSpotLogin.config['logo']),
+          :result           => result,
         }
       )
 

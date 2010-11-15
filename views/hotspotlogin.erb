@@ -2,7 +2,20 @@
   require 'hotspotlogin/app/helpers'
 %>
 
+<% if custom_headline %>
+  <h1><%= custom_headline %></h1>
+<% end %>
+<% if logoext %>
+  <div id="logo-container"><img src="/hotspotlogin/logo<%= logoext %>"/></div>
+<% end %>
+
 <h2 id="headline"><%= titel %></h1>
+
+<% if header and File.file? header %>
+  <div id="custom-header"><%= File.read header %></div>
+<% end %>
+
+<%# TODO: use constants.rb %> 
 <% if [1, 4, 12].include? result %>
   <div style="text-align: center;">
     <a 
@@ -73,5 +86,10 @@
       </tbody>
     </table>
   </div>
+
+  <% if header and File.file? footer %>
+    <div id="footer"><%= File.read footer %></div>
+  <% end %>
+
 <% end %>
 

@@ -29,9 +29,29 @@ module HotSpotLogin
       # Command line switches override configuration file.
       
       opts.on('--interval SECONDS', 'autorefresh accounting/session data every SECONDS seconds') do |seconds|
-        @@config['interval'] = seconds
+        @@config['interval'] = seconds.to_i
       end
 
+      opts.on('--custom-headline TEXT', 'display <h1>TEXT</h1> on top of the login page, tipically your Organization name') do |text|
+        @@config['custom-headline'] == text
+      end
+
+      opts.on('--header FILE', 'display HTML fragment FILE before the user stats table') do |file|
+        @@config['header'] == file
+      end
+
+      opts.on('--footer FILE', 'display HTML fragment FILE after the user stats table') do |file|
+        @@config['header'] == file
+      end
+
+      opts.on('--logo FILE', 'logo (of your Organization etc.)') do |file|
+        @@config['logo'] = file
+      end
+
+      opts.on('--favicon FILE', 'well, favicon ;)') do |file|
+        @@config['favicon'] = file
+      end
+     
       opts.on('--[no-]daemon', 'become a daemon') do |daemonize|
         @@config['daemon'] = daemonize
       end
