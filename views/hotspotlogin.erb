@@ -53,14 +53,6 @@
           <th scope="row">Client State</th>
           <td id="clientState"></td>
         </tr>
-        <!-- 
-          Sorry, CoovaChilli JSON interface does not support this, 
-          probably for good reasons...
-        -->
-        <!-- <tr>
-          <th scope="row">Terminate Cause</th>
-          <td id="terminateCause"></td>
-        </tr> -->
         <tr id="sessionTime:row">
           <th scope="row">Session Time</th>
           <td id="sessionTime"></td>
@@ -89,7 +81,7 @@
     </table>
   </div>
 
-  <% if header and File.file? footer %>
+  <% if footer and File.file? footer %>
     <div id="footer"><%= File.read footer %></div>
   <% end %>
 
