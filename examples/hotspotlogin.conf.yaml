@@ -6,7 +6,7 @@ userpassword: false
 log-http: true
 interval: 300
 custom-headline: My Organization Name
-header: /some/path/fragment.html
-footer: /some/other/path/fragment.html
+custom-text: /some/path/fragment.html
+custom-footer: /some/other/path/fragment.html
 logo: /some/path/to/mylogo.png
 favicon: /path/to/favicon.ico

@@ -1,18 +1,19 @@
+body {
+  font-size: 10pt;
+}
 h1, h2 {
   text-align: center;
   font-family: sans-serif;
-  margin: 0.1ex 0;
 }
-
 h1 {
   font-size: 160%;
+  margin: 0.1ex 0;
 }
-
 h2 {
   font-size: 135%;
+  margin-top: 0.1ex;
   font-style: italic;
 }
-
 #powered-by {
   text-align: right; 
   font-style: italic; 
@@ -20,7 +21,6 @@ h2 {
   font-family: sans-serif; 
   font-size:smaller;
 }
-
 #logo-container {
   text-align: center;
   margin: 0 0;
@@ -28,7 +28,10 @@ h2 {
 #form-container {
   text-align: center;
 }
-#form-container th {
+#form-container table {
+  margin: 1em auto 0.5em auto;
+}
+#form-container table tr th {
   text-align: left;
 }
 #logInLogOut-container {
@@ -38,8 +41,12 @@ h2 {
 }
 #status-container {
   text-align: center;
-  border: 1px blue solid;
   margin: 0 0 1em 0;
+}
+#status-table {
+  margin: auto;
+  border: 1px blue solid;
+  padding: 0.5ex;
 }
 #status-table th {
   text-align: left;
@@ -51,7 +58,18 @@ h2 {
   font-size: smaller;
   font-style: italic;
 }
-#footer {
+#submit-container {
+}
+#submit-container button, #submit-container input[type="submit"] {
+  width: 5em;
+}
+#custom-text {
+  font-size: 94%;
+  padding: 0 1ex;
+  margin-bottom: 1.5em;
+}
+#custom-footer {
+  margin-top: 2em;
   font-size: small;
   font-family: sans-serif;
   text-align: center;

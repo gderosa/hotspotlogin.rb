@@ -36,12 +36,12 @@ module HotSpotLogin
         @@config['custom-headline'] == text
       end
 
-      opts.on('--header FILE', 'display HTML fragment FILE before the user stats table') do |file|
-        @@config['header'] == file
+      opts.on('--custom-text FILE', 'display HTML fragment FILE before the user stats table/login form') do |file|
+        @@config['custom-text'] == file
       end
 
-      opts.on('--footer FILE', 'display HTML fragment FILE after the user stats table') do |file|
-        @@config['header'] == file
+      opts.on('--custom-footer FILE', 'display HTML fragment FILE after the user stats table/login form') do |file|
+        @@config['custom-footer'] == file
       end
 
       opts.on('--logo FILE', 'logo (of your Organization etc.)') do |file|
@@ -68,7 +68,7 @@ module HotSpotLogin
         @@config['uamsecret'] = uamsecret
       end
 
-      opts.on('--[no-]userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi') do |userpassword|
+      opts.on('--[no-]userpassword', 'like setting $userpassword=1 in hotspotlogin.cgi (use PAP instead of CHAP)') do |userpassword|
         @@config['userpassword'] = userpassword
       end
 

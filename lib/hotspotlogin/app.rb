@@ -173,6 +173,11 @@ module HotSpotLogin
         headline = 'HotSpot Login Failed'
       end
 
+      logoext = nil
+      logoext = 
+          File.extname(HotSpotLogin.config['logo']) if
+          File.extname(HotSpotLogin.config['logo'])
+
       erb(
         :hotspotlogin,
         :locals => {
@@ -184,13 +189,13 @@ module HotSpotLogin
           :userurl          => params['userurl'],
           #:redirurl        => params['redirurl'],
           :redirurl         => params['userurl'],
-          :timeleft        => params['timeleft'], # legacy... 
+          :timeleft         => params['timeleft'], # legacy... 
           :interval         => HotSpotLogin.config['interval'],
           :custom_headline  => 
               HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
-          :header           => HotSpotLogin.config['header'],
-          :footer           => HotSpotLogin.config['footer'],
-          :logoext          => File.extname(HotSpotLogin.config['logo']),
+          :custom_text      => HotSpotLogin.config['custom-text'],
+          :custom_footer    => HotSpotLogin.config['custom-footer'],
+          :logoext          => logoext,
           :result           => result,
         }
       )

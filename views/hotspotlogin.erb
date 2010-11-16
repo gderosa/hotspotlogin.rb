@@ -11,8 +11,8 @@
 
 <h2 id="headline"><%= titel %></h1>
 
-<% if header and File.file? header %>
-  <div id="custom-header"><%= File.read header %></div>
+<% if custom_text and File.file? custom_text %>
+  <div id="custom-text"><%= File.read custom_text %></div>
 <% end %>
 
 <%# TODO: use constants.rb %> 
@@ -81,9 +81,10 @@
     </table>
   </div>
 
-  <% if footer and File.file? footer %>
-    <div id="footer"><%= File.read footer %></div>
-  <% end %>
-
 <% end %>
+
+<% if custom_footer and File.file? custom_footer %>
+  <div id="custom-footer"><%= File.read custom_footer %></div>
+<% end %>
+
 
