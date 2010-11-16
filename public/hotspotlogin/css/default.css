@@ -31,10 +31,15 @@ h2 {
 #form-container th {
   text-align: left;
 }
+#logInLogOut-container {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: center;
+}
 #status-container {
   text-align: center;
   border: 1px blue solid;
-  margin: 1em;
+  margin: 0;
 }
 #status-table th {
   text-align: left;
