@@ -6,7 +6,13 @@ Hotspotlogin is a reimplementation in Ruby/Sinatra of the popular
 hotspotlogin.cgi used with ChilliSpot and compatible Network Access 
 Controllers to provide a Captive Portal environment.
 
-http://github.com/gderosa/hotspotlogin.rb
+This release features displaying of detailed accounting info for the end user,
+and is strongly based on CoovaChilli Network Access Controller and its
+JSON interface.
+
+* http://github.com/gderosa/hotspotlogin.rb
+
+* http://coova.org/CoovaChilli/JSON
 
 === USAGE:
 
@@ -18,37 +24,52 @@ On the command-line:
   
   $ hotspotlogin [options]
 
-==== Options
+==== General Options
 
-  --[no-]daemon		daemonize [by default, executes in foreground]
+  --[no-]daemon                   daemonize [by default, executes in foreground]
 
-  --log			log file (ignored when --no-daemon)
+  --log                           log file (ignored when --no-daemon)
 
-  --pid			pid file (ignored when --no-daemon)
+  --pid                           pid file (ignored when --no-daemon)
 
-  --port 		[default 4990]
+  --port                          [default 4990]
 
-  --listen-address	[default 0.0.0.0]
+  --listen-address                [default 0.0.0.0]
 
-  --[no-]userpassword	[default true]		
+  --[no-]userpassword             [default true]		
 
-  --[no-]log-http	[default false]
+  --[no-]log-http                 [default false]
 
-  --uamsecret <PASS>	optional, shared secret as in chilli.conf(5) 
+  --uamsecret <PASS>              optional, shared secret as in chilli.conf(5) 
 
-  --conf <FILE>		YAML configuration file, see examples/ 	
+  --conf <FILE>                   YAML configuration file, see examples/ 	
+
+==== End User Interface Options
+
+  --interval <SECONDS>            autorefresh interval
+
+  --logo <IMAGE FILE>             will be displayed in any page as 
+                                  /hotspotlogin/logo.( png | jpg | etc... )  
+
+  --custom-text <FRAGMENT.html>
+
+  --custom-footer <FRAGMENT.html>
+
+  --custom-headline <TEXT>        will be put inside <h1></h1>
+
+  --favicon <FILE>
 
 See also chilli.conf(5) manual page.
 
 ==== Unix Signals
 
-  USR1			sync/update log file (flush buffered I/O) 
+  USR1                            sync/update log file (flush buffered I/O) 
   
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2010 Guido De Rosa <guido.derosa*vemarsas.it>
+Copyright (c) 2010 Guido De Rosa (guido.derosa*vemarsas.it)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

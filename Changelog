@@ -1,5 +1,15 @@
-* 0.1.2 (2010-11-08) 
-  * become session leader when forking/daemonizing
+* 1.0.0 (2010-11-16)
+  * Major rewrite based on CoovaChilli JSON API (coova.org/CoovaChilli/JSON).
+    * tested with CoovaChilli 1.2.5, and IE7, FF3, Epiphany/WebKit
+    * uses JavaScript and popups, your browser must support/allow them
+    * periodic auto-refresh of accounting data to the end user, including
+      downstream and upstream network traffic
+    * supports Session and Idle Timeout, showing relevant info if applicable,
+      and refreshing info when user is disconnected
+    * view customization, with Your Org logo, custom text, etc.
+    * some legacy code still around, sorry
 
-    This is to avoid trapping terminal interrupts from a parent console
-    process, etc.
+* 0.1.2 (2010-11-08) 
+  * Become session leader when forking/daemonizing.
+    * this is to avoid trapping terminal interrupts from a parent console
+      process, etc.
