@@ -128,16 +128,18 @@ function showUserStatus(h) {
 
   function updateLinks(clientState) {
     var e = document.getElementById('logInLogOut');
-    switch(clientState) {
-      case chilliController.stateCodes.NOT_AUTH:
-        e.setAttribute('href', loginURL());
-        e.innerHTML = 'Login';
-        break;
-      case chilliController.stateCodes.AUTH:
-        e.setAttribute('href', '#');
-        e.onclick = chilliController.logoff; 
-        e.innerHTML = 'Logout';
-        break;
+    if (e) {
+      switch(clientState) {
+        case chilliController.stateCodes.NOT_AUTH:
+          e.setAttribute('href', loginURL());
+          e.innerHTML = 'Login';
+          break;
+        case chilliController.stateCodes.AUTH:
+          e.setAttribute('href', '#');
+          e.onclick = chilliController.logoff; 
+          e.innerHTML = 'Logout';
+          break;
+      }
     }
   }
 
@@ -145,28 +147,43 @@ function showUserStatus(h) {
   function updateUI( cmd ) {
     updateHeadings( chilliController.clientState);
     updateLinks(    chilliController.clientState);
-    document.getElementById('userName').innerHTML = (
-        chilliController.session.userName
-    );
-    document.getElementById('clientState').innerHTML = (
-      formatStateCode(chilliController.clientState) 
-    );
+    var userName_e        = document.getElementById('userName');
+    var clientState_e     = document.getElementById('clientState');
+    var sessionTime_e     = document.getElementById('sessionTime');
+    var sessionTimeLeft_e = document.getElementById('sessionTimeLeft');
+    var download_e        = document.getElementById('download');
+    var upload_e          = document.getElementById('upload');
+    var interval_e        = document.getElementById('interval');
+    if (userName_e) {
+      userName_e.innerHTML = (
+          chilliController.session.userName
+      );
+    }
+    if (clientState_e) {
+      clientState_e.innerHTML = (
+        formatStateCode(chilliController.clientState) 
+      );
+    }
     //if (chilliController.terminateCause) {
     //  document.getElementById('terminateCause').innerHTML = (
     //    chilliController.terminateCause
     //  )
     //}
-    document.getElementById('sessionTime').innerHTML = (
-      chilliController.formatTime(
-        chilliController.accounting.sessionTime, '0')
-    );
-    if (chilliController.session.sessionTimeout) {
-      document.getElementById('sessionTimeLeft').innerHTML = (
-        chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
+    if (sessionTime_e) {
+      document.getElementById('sessionTime').innerHTML = (
+        chilliController.formatTime(
+          chilliController.accounting.sessionTime, '0')
       );
-      document.getElementById('sessionTimeLeft:row').style.display = '';
-    } else {
-      document.getElementById('sessionTimeLeft').innerHTML = ''
+    }
+    if (sessionTimeLeft_e) {
+      if (chilliController.session.sessionTimeout) {
+        document.getElementById('sessionTimeLeft').innerHTML = (
+          chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
+        );
+        document.getElementById('sessionTimeLeft:row').style.display = '';
+      } else {
+        document.getElementById('sessionTimeLeft').innerHTML = ''
+      }
     }
     if (chilliController.session.idleTimeout) {
       document.getElementById('idleTimeout').innerHTML = (
@@ -182,15 +199,21 @@ function showUserStatus(h) {
     var upload_bytes = 
       chilliController.accounting.outputOctets +
       Math.pow(2, 32) * chilliController.accounting.outputGigawords;    
-    document.getElementById('download').innerHTML = (
-      chilliController.formatBytes(download_bytes, 0)
-    );
-    document.getElementById('upload').innerHTML = (
-      chilliController.formatBytes(upload_bytes, 0)
-    );
-    document.getElementById('interval').innerHTML = (
-      chilliController.formatTime(chilliController.interval, 0)
-    );
+    if (download_e) {
+      download_e.innerHTML = (
+        chilliController.formatBytes(download_bytes, 0)
+      );
+    }
+    if (upload_e) {
+      upload_e.innerHTML = (
+        chilliController.formatBytes(upload_bytes, 0)
+      );
+    }
+    if (interval_e) {
+      interval_e.innerHTML = (
+        chilliController.formatTime(chilliController.interval, 0)
+      );
+    }
     
     chilliController.scheduleSessionTimeoutAutorefresh();
     chilliController.scheduleIdleTimeoutAutorefresh();
