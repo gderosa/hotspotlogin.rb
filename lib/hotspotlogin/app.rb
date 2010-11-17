@@ -175,8 +175,8 @@ module HotSpotLogin
 
       logoext = nil
       logoext = 
-          File.extname(HotSpotLogin.config['logo']) if
-          File.extname(HotSpotLogin.config['logo'])
+          File.extname(HotSpotLogin.config['logo']) if 
+          HotSpotLogin.config['logo']
 
       erb(
         :hotspotlogin,
