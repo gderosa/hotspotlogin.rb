@@ -1,3 +1,5 @@
+* 1.0.1 (2010-11-17)
+	* Urgent bugfix: handle config['logo'] == nil (TypeError)
 * 1.0.0 (2010-11-16)
   * Major rewrite based on CoovaChilli JSON API (coova.org/CoovaChilli/JSON).
     * tested with CoovaChilli 1.2.5, and IE7, FF3, Epiphany/WebKit
