@@ -2,6 +2,11 @@
   require 'hotspotlogin/app/helpers'
 %>
 
+<!-- 
+  Some element IDs reflect JS method names, other reflect RADIUS 
+  attributes: this explains the apparent naming inconsistency 
+-->
+
 <% if custom_headline %>
   <h1><%= custom_headline %></h1>
 <% end %>
@@ -10,6 +15,11 @@
 <% end %>
 
 <h2 id="headline"><%= titel %></h2>
+<div id="Reply-Message">
+  <% if params['reply'] %>
+    <%= html_escape params['reply'] %>
+  <% end %>
+</div>
 
 <% if custom_text and File.file? custom_text %>
   <div id="custom-text"><%= File.read custom_text %></div>
@@ -38,9 +48,6 @@
   <p>Login must be performed through ChilliSpot daemon!</p>
 <% end %>
 
-<% if params['reply'] %>
-  <div style="text-align: center;"><%= params['reply'] %></div>
-<% end %>
 
 <% if status_window?(result) %>
   <div id="status-container">

@@ -12,6 +12,7 @@ h1 {
 h2 {
   font-size: 135%;
   margin-top: 0.1ex;
+  margin-bottom: 0.5ex;
   font-style: italic;
 }
 #powered-by {
@@ -25,6 +26,11 @@ h2 {
 #logo-container {
   text-align: center;
   margin: 0 0;
+}
+#Reply-Message {
+  margin: 1em;
+  font-family: monospace;
+  text-align: center;
 }
 #form-container {
   text-align: center;
