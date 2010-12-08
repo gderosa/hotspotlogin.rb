@@ -57,14 +57,6 @@
         }
       }
 
-      function doOnBlur(result) {
-        if ((result == 12) && (self.name == "chillispot_popup")) {
-          if (blur == 0) {
-            blur = 1;
-            self.focus();
-          }
-        }
-      }
     </script>
 
     <link rel="stylesheet" href="/hotspotlogin/css/default.css"/>
@@ -72,7 +64,7 @@
 
   </head>
 
-  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&timeleft=<%= timeleft %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')" onBlur="javascript:doOnBlur(<%= result %>)">
+  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&timeleft=<%= timeleft %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')">
     <div id="powered-by">
       Powered by <a href="http://rubygems.org/gems/hotspotlogin">hotspotlogin.rb</a>
     </div>
