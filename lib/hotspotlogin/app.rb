@@ -18,8 +18,6 @@ module HotSpotLogin
 
     #set :run,     false
 
-    include ERB::Util # for html_escape...
-
     result, titel, headline, bodytext = '', '', '', ''
 
     before do
