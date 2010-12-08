@@ -17,7 +17,7 @@
 <h2 id="headline"><%= titel %></h2>
 <div id="Reply-Message">
   <% if params['reply'] %>
-    <%= html_escape params['reply'] %>
+    <%= Rack::Utils::escape_html params['reply'] %>
   <% end %>
 </div>
 

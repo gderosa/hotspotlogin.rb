@@ -143,10 +143,26 @@ function showUserStatus(h) {
     }
   }
 
+  function updateReplyMessage(clientState) {
+    var e = document.getElementById('Reply-Message');
+    if (e) {
+      switch(clientState) {
+        case chilliController.stateCodes.NOT_AUTH:
+          e.style.visibility = 'hidden';
+          break;
+        case chilliController.stateCodes.AUTH:
+          e.style.visibility = 'visible';
+          break;
+      }
+    }
+  }
+
   // when the reply is ready, this handler function is called
   function updateUI( cmd ) {
-    updateHeadings( chilliController.clientState);
-    updateLinks(    chilliController.clientState);
+    updateHeadings(     chilliController.clientState);
+    updateLinks(        chilliController.clientState);
+    updateReplyMessage( chilliController.clientState);
+
     var userName_e        = document.getElementById('userName');
     var clientState_e     = document.getElementById('clientState');
     var sessionTime_e     = document.getElementById('sessionTime');

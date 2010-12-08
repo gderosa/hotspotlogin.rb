@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
 require 'erb'
-require 'pp'
 
 require 'hotspotlogin/constants'
 require 'hotspotlogin/config'

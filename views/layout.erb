@@ -1,4 +1,6 @@
-<% 
+<%
+  require 'rack/utils'
+
   require 'hotspotlogin/constants'
 
   loginpath = request.path_info
@@ -64,7 +66,7 @@
 
   </head>
 
-  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&reply=<%= reply %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')">
+  <body onLoad="javascript:doOnLoad(<%= result %>, '<%= request.path_info %>?res=popup2&uamip=<%= uamip %>&uamport=<%= uamport %>&userurl=<%= userurl %>&redirurl=<%= redirurl %>&reply=<%= Rack::Utils::escape reply %>','<%= userurl %>', '<%= redirurl %>', '<%= timeleft %>')">
     <div id="powered-by">
       Powered by <a href="http://rubygems.org/gems/hotspotlogin">hotspotlogin.rb</a>
     </div>
