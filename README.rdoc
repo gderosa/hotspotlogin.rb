@@ -51,6 +51,9 @@ On the command-line:
   --logo <IMAGE FILE>             will be displayed in any page as 
                                   /hotspotlogin/logo.( png | jpg | etc... )  
 
+  --signup-url <URL>              if you have a web page where end-users may create 
+                                  new accounts, a link will be displayed
+
   --custom-text <FRAGMENT.html>
 
   --custom-footer <FRAGMENT.html>
