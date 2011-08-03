@@ -38,7 +38,10 @@
     <%= 
       erb(
         :_login_form,
-        :layout => false
+        :layout => false,
+        :locals => {
+          :signup_url => signup_url,
+        }
       )  
     %>
   </div>

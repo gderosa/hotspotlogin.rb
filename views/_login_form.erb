@@ -16,6 +16,6 @@
     </tbody>
   </table>
   <div id="submit-container">
-    <input type="submit" name="login" value="login">
+    <input type="submit" name="login" value="login"><% if signup_url =~ /\S/ %> OR <a href="<%= signup_url %>" target="_blank">Signup!</a><% end %>
   </div>
 </form>
