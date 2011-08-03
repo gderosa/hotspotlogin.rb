@@ -1,3 +1,6 @@
+* 1.1.0 (2011-08-03)
+  * --signup-url
+
 * 1.0.2 (2010-12-08)
 	* Display Reply-Message properly
 		* fix serious encoding issues
