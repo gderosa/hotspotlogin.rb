@@ -1,6 +1,6 @@
 module HotSpotLogin
 
-  VERSION = '1.1.0'
+  VERSION = '1.2.0'
 
   DEFAULT_CONFIG = {
     'listen-address'    => '0.0.0.0',

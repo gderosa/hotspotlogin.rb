@@ -25,6 +25,7 @@ On the command-line:
   $ hotspotlogin [options]
 
 ==== General Options
+All this options may be put into the YAML config file specified by --conf
 
   --[no-]daemon                   daemonize [by default, executes in foreground]
 
@@ -50,9 +51,15 @@ On the command-line:
 
   --logo <IMAGE FILE>             will be displayed in any page as 
                                   /hotspotlogin/logo.( png | jpg | etc... )  
+  
+  --logo-link <URL>
 
   --signup-url <URL>              if you have a web page where end-users may create 
                                   new accounts, a link will be displayed
+
+  --my-url <URL>                  "My Account" link, where -USER- will be replaced by 
+                                  the actual username, e.g. 
+                                  http://accounts.mysite.com/?id=-USER- 
 
   --custom-text <FRAGMENT.html>
 

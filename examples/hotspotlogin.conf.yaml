@@ -10,4 +10,6 @@ custom-headline: My Organization Name
 custom-text: /some/path/fragment.html
 custom-footer: /some/other/path/fragment.html
 logo: /some/path/to/mylogo.png
+logo-link: http://myorg.com
+my-url: http://accounts.myorg.com/?id=-USER- # -USER- will be dinamically replaced by real username
 favicon: /path/to/favicon.ico
