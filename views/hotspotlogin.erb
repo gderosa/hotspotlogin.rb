@@ -7,12 +7,6 @@
   attributes: this explains the apparent naming inconsistency 
 -->
 
-<style type="text/css">
-  #logInLogOut-container a {
-    margin:0 0.5ex;
-  }
-</style>
-
 <% if custom_headline %>
   <h1><%= custom_headline %></h1>
 <% end %>
@@ -38,9 +32,6 @@
       id="logInLogOut" 
       href="http://<%= uamip %>:<%= uamport %>/logoff">Logout</a>
     <a href="#" onClick="javascript:chilliController.refresh();">Refresh</a>
-    <% if params['uid'] and params['uid'] =~ /\S/ and my_url and my_url =~ /\S/ %>
-      <a id="myAccount" href="<%= my_url.sub('-USER-', params['uid']) %>" target="_blank">My Account</a>
-    <% end %>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
   <div id="form-container">
