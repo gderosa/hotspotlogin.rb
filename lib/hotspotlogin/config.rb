@@ -48,6 +48,18 @@ module HotSpotLogin
         @@config['logo'] = file
       end
 
+      opts.on('--logo-link URL', 'add an hyperlink to the logo') do |url|
+        @@config['logo-link'] = url
+      end
+
+      opts.on('--my-url URL', 'display a "My Account" link, -USER- will be dinamically replaced by the actual username, e.g. https://accounts.myorg.com/?id=-USER-') do |url|
+        @@config['my-url'] = url
+      end
+
+      opts.on('--signup-url URL', 'display an external link where end-user may create a new account') do |url|
+        @@config['signup-url'] = url
+      end
+
       opts.on('--favicon FILE', 'well, favicon ;)') do |file|
         @@config['favicon'] = file
       end
