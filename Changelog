@@ -1,3 +1,6 @@
+* 1.2.1 (2011-08-08)
+  * fix command line options
+
 * 1.2.0 (2011-08-08)
   * --logo-link
   * --my-url ("My Account" link w/ dynamic replacement of the actual username) 
