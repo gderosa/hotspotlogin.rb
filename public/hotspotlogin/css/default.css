@@ -46,6 +46,9 @@ h2 {
   margin: 0.5em 0;
   text-align: center;
 }
+#logInLogOut-container a {
+  margin: 0 0.5ex;
+}
 #status-container {
   text-align: center;
   margin: 0 0 1em 0;
