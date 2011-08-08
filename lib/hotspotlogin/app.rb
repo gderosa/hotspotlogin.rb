@@ -195,6 +195,7 @@ module HotSpotLogin
           :custom_text      => HotSpotLogin.config['custom-text'],
           :custom_footer    => HotSpotLogin.config['custom-footer'],
           :logoext          => logoext,
+          :logo_link        => HotSpotLogin.config['logo-link'],
           :result           => result,
           :reply            => params['reply'] # Reply-Message
         }

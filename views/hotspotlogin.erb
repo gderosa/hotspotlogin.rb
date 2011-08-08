@@ -11,7 +11,11 @@
   <h1><%= custom_headline %></h1>
 <% end %>
 <% if logoext %>
-  <div id="logo-container"><img src="/hotspotlogin/logo<%= logoext %>"/></div>
+  <div id="logo-container">
+    <% if logo_link =~ /\S/ %><a href="<%= logo_link %>" target="_blank"><% end %>
+      <img src="/hotspotlogin/logo<%= logoext %>"/>
+    <% if logo_link =~ /\S/ %></a><% end %>
+  </div>
 <% end %>
 
 <h2 id="headline"><%= titel %></h2>
