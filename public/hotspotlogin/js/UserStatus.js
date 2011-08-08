@@ -141,6 +141,12 @@ function showUserStatus(h) {
           break;
       }
     }
+
+    var e = document.getElementById('myAccount');
+    if (e) {
+      e.style.display = '';
+      e.setAttribute( 'href', h.myAccountUrlTemplate.replace('-USER-', chilliController.session.userName) );
+    }
   }
 
   function updateReplyMessage(clientState) {

@@ -32,6 +32,12 @@
       id="logInLogOut" 
       href="http://<%= uamip %>:<%= uamport %>/logoff">Logout</a>
     <a href="#" onClick="javascript:chilliController.refresh();">Refresh</a>
+    <a
+      id="myAccount"
+      href=""
+      target="_blank"
+      style="display:none;"
+    >My Account<a>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
   <div id="form-container">

@@ -61,6 +61,14 @@
 
     </script>
 
+    <!-- CovaChilli JSON interface -->
+    <script 
+      type="text/javascript" src="hotspotlogin/js/ChilliLibrary.js">
+    </script>
+    <script 
+      type="text/javascript" src="hotspotlogin/js/UserStatus.js">
+    </script>
+
     <link rel="stylesheet" href="/hotspotlogin/css/default.css"/>
     <link rel="shortcut icon" href="/hotspotlogin/favicon.ico"/>
 
@@ -75,17 +83,12 @@
     </div>
     <% if status_window?(result) %>
       <!-- CovaChilli JSON interface -->
-      <script 
-        type="text/javascript" src="hotspotlogin/js/ChilliLibrary.js">
-      </script>
-      <script 
-        type="text/javascript" src="hotspotlogin/js/UserStatus.js">
-      </script>
       <script language="JavaScript">
         showUserStatus( {
-          uamip:    "<%= uamip %>",
-          uamport:  <%= uamport %>,
-          interval: <%= interval %>
+          uamip:                "<%= uamip %>",
+          uamport:              <%= uamport %>,
+          interval:             <%= interval %>,
+          myAccountUrlTemplate: '<%= my_url %>'
         } );
       </script>
     <% end %>

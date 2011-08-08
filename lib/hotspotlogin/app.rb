@@ -189,6 +189,7 @@ module HotSpotLogin
           :timeleft         => params['timeleft'], # legacy... 
           :interval         => HotSpotLogin.config['interval'],
           :signup_url       => HotSpotLogin.config['signup-url'],
+          :my_url           => HotSpotLogin.config['my-url'],
           :custom_headline  => 
               HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
           :custom_text      => HotSpotLogin.config['custom-text'],
