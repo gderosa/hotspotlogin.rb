@@ -1,8 +1,13 @@
 require 'facets/string'
 
-=begin
+class String 
 
-class String # use Facets implementation instead
+  # Escape single quote for use in generated JavaScript
+  def escape_js
+    gsub("'", "\\\\'")
+  end
+
+=begin # use Facets implementation instead
   # Bitwise XOR, behaves like in Perl or PHP
   def ^(other)
     # treat as a raw/binary sequence of bytes
@@ -17,6 +22,6 @@ class String # use Facets implementation instead
     end
     return bytes_result.map{|b| b.chr}.join
   end
+=end
 end
 
-=end

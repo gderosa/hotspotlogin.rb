@@ -16,3 +16,7 @@ account:
 username:
   short: login
   long: username
+logout: logout
+refresh: refresh
+my: my account
+

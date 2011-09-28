@@ -1,6 +1,7 @@
 <% 
   require 'facets/string'
   require 'sinatra/r18n'
+  require 'hotspotlogin/extensions/string'
 %>
 // Requires ChilliLibrary.js
 // See: http://www.coova.org/CoovaChilli/JSON
@@ -117,10 +118,10 @@ function showUserStatus(h) {
     txt = null;
     switch(clientState) {
       case chilliController.stateCodes.NOT_AUTH:
-        txt = '<%= t.login.result.logoff.uppercase %>';
+        txt = '<%= t.login.result.logoff.uppercase.escape_js %>';
         break;
       case chilliController.stateCodes.AUTH:
-        txt = '<%= t.login.result.success.uppercase %>';
+        txt = '<%= t.login.result.success.uppercase.escape_js %>';
         break;
     }
     if (txt) {
@@ -136,12 +137,12 @@ function showUserStatus(h) {
       switch(clientState) {
         case chilliController.stateCodes.NOT_AUTH:
           e.setAttribute('href', loginURL());
-          e.innerHTML = 'Login';
+          e.innerHTML = '<%= t.login.you!.uppercase.escape_js %>';
           break;
         case chilliController.stateCodes.AUTH:
           e.setAttribute('href', '#');
           e.onclick = chilliController.logoff; 
-          e.innerHTML = 'Logout';
+          e.innerHTML = '<%= t.logout.uppercase.escape_js %>';
           break;
       }
     }

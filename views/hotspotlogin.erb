@@ -1,4 +1,6 @@
 <%
+  require 'facets/string'
+  require 'sinatra/r18n'
   require 'hotspotlogin/app/helpers'
 %>
 
@@ -35,14 +37,14 @@
   <div id="logInLogOut-container">
     <a 
       id="logInLogOut" 
-      href="http://<%= uamip %>:<%= uamport %>/logoff">Logout</a>
-    <a href="#" onClick="javascript:chilliController.refresh();">Refresh</a>
+      href="http://<%= uamip %>:<%= uamport %>/logoff"><%= t.logout.uppercase %></a>
+    <a href="#" onClick="javascript:chilliController.refresh();"><%= t.refresh.uppercase %></a>
     <a
       id="myAccount"
       href=""
       target="_blank"
       style="display:none;"
-    >My&nbsp;Account</a>
+    ><%= t.my.uppercase %></a>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
   <div id="form-container">
