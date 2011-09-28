@@ -1,0 +1,10 @@
+login:
+  "you!": sign in
+signup:
+  "you!": sign up
+account:
+  dont_have:
+    you: "don&rdquo;t have an account"
+username:
+  short: login
+  long: username
