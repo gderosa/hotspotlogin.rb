@@ -13,9 +13,16 @@
         <th scope="row">Password:</td>
         <td><input type="password" name="Password" size="16" maxlength="255"></td>
       </tr>
+      <tr> <!-- yeah, it's horrible -->
+        <td colspan="2" id="submit-container">
+          <input type="submit" name="login" value="Login">
+        </td>
+      </tr>
     </tbody>
   </table>
-  <div id="submit-container">
-    <input type="submit" name="login" value="login"><% if signup_url =~ /\S/ %> OR <a href="<%= signup_url %>" target="_blank">Signup!</a><% end %>
-  </div>
 </form>
+<% if signup_url =~ /\S/ %><span id="signup-container">
+  Don't have an account?
+  <a id="signup" href="<%= signup_url %>" target="_blank">Signup!</a>
+</span><% end %>
+

@@ -70,9 +70,11 @@ h2 {
   font-style: italic;
 }
 #submit-container {
+  text-align: left;
 }
 #submit-container button, #submit-container input[type="submit"] {
-  width: 5em;
+  width: 4.5em;
+  font-size:105%;
 }
 #custom-text {
   font-size: 94%;
@@ -85,7 +87,28 @@ h2 {
   text-align: center;
 }
 
+/* button, input[type="submit"] {
+  background: white;
+} */
+
 a img {
   border: none;
 }
 
+#signup-container{
+  font-size:110%;
+  font-style:italic;
+  font-weight: normal;
+}
+
+a#signup {
+  color: white;
+  background: #88c;
+  padding: 0.1em 0.2em;
+  text-decoration: none;
+  font-style:normal;
+}
+
+th {
+  font-size: 90%;
+}
