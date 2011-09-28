@@ -127,7 +127,7 @@ module HotSpotLogin
         # bitwise XOR between (binary) Strings (operator ^) 
         # implemented in extensions/ 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
-        titel = headline = t.login.result.logging_into.uppercase 
+        titel = headline = t.login.result.logging_into.uppercase + '...'
                                                         # 'Logging in to HotSpot'
 
         #if uamsecret and userpassword
@@ -165,7 +165,7 @@ module HotSpotLogin
                                                   # 'Logged out from HotSpot'
       elsif params['res'] == 'popup1'
         result = Result::PopUp::LOGGING_IN
-        titel = t.login.result.logging_into.uppercase
+        titel = t.login.result.logging_into.uppercase + '...'
                                                   # 'Logging into HotSpot'
         headline = t.login.result.success.uppercase
                                                   # 'Logged in to HotSpot'
