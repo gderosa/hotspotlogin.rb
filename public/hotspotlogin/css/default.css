@@ -9,6 +9,10 @@ h1 {
   font-size: 140%;
   margin: 0.1ex 0;
 }
+h1#custom-headline {
+  font-style: italic;
+  font-weight: normal;  
+}
 h2 {
   font-size: 125%;
   margin-top: 0.1ex;
@@ -82,7 +86,7 @@ h2 {
   margin-bottom: 1.5em;
 }
 #custom-footer {
-  margin-top: 2em;
+  margin-top: 2.6em;
   font-size: 90%;
   text-align: center;
 }
@@ -103,8 +107,8 @@ a img {
 
 a#signup {
   color: white;
-  background: #88c;
-  padding: 0.1em 0.2em;
+  background: #88f;
+  padding: 0 0.2em 0.1em 0.2em;
   text-decoration: none;
   font-style:normal;
 }

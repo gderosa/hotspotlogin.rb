@@ -6,7 +6,7 @@
   <table>
     <tbody>
       <tr>
-        <th scope="row">Login:</td>
+        <th scope="row"><%= t.username.short.capitalize %>:</td>
         <td><input type="text" name="UserName" size="16" maxlength="255"></td>
       </tr>
       <tr>
@@ -15,14 +15,14 @@
       </tr>
       <tr> <!-- yeah, it's horrible -->
         <td colspan="2" id="submit-container">
-          <input type="submit" name="login" value="Login">
+          <input type="submit" name="login" value="<%= t.login.you!.capitalize %>">
         </td>
       </tr>
     </tbody>
   </table>
 </form>
 <% if signup_url =~ /\S/ %><span id="signup-container">
-  Don't have an account?
-  <a id="signup" href="<%= signup_url %>" target="_blank">Signup!</a>
+  <%= t.account.dont_have.you.capitalize %>?
+  <a id="signup" href="<%= signup_url %>" target="_blank"><%= t.signup.you!.capitalize %>!</a>
 </span><% end %>
 

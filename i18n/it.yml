@@ -1,0 +1,10 @@
+login:
+  "you!": accedi
+signup:
+  "you!": registrati
+account:
+  dont_have:
+    you: non hai un account
+username:
+  short: utente
+  long: nome utente

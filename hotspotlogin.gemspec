@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
     "bin/hotspotlogin", 
     "examples/hotspotlogin.conf.yaml", 
     "examples/etc/lighttpd/lighttpd.conf",
+    "i18n/en.yml",
+    "i18n/it.yml",
     "lib/hotspotlogin.rb", 
     "lib/hotspotlogin/app.rb", 
     "lib/hotspotlogin/app/helpers.rb",
@@ -32,4 +34,5 @@ Gem::Specification.new do |s|
   s.executables = ['hotspotlogin'] 
   s.add_dependency 'sinatra'
   s.add_dependency 'rack' # we use Rack::Utils explicitly
+  s.add_dependency 'sinatra-r18n'
 end

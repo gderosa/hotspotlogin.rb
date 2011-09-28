@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
+require 'sinatra/r18n'
 require 'erb'
 
 require 'hotspotlogin/constants'
@@ -15,6 +16,8 @@ module HotSpotLogin
     set :host,    HotSpotLogin.config['listen-address']
     set :port,    HotSpotLogin.config['port']
     set :logging, HotSpotLogin.config['log-http']
+
+    register Sinatra::R18n
 
     #set :run,     false
 
@@ -103,7 +106,9 @@ module HotSpotLogin
       userpassword = HotSpotLogin.config['userpassword']
 
       # attempt to login
-      if params['login'] == 'login'
+      if params['login']  # == 'login'
+                          # So you can put whichever text you want in submit button
+                          # as in <input type="submit" name="login" value="MyText"...
         hexchal = Array[params['chal']].pack('H32')
         if uamsecret
           newchal = 
