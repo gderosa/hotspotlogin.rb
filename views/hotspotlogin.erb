@@ -12,7 +12,7 @@
 <% end %>
 <% if logoext %>
   <div id="logo-container">
-    <% if logo_link =~ /\S/ %><a href="<%= logo_link %>" target="_blank"><% end %>
+    <% if logo_link =~ /\S/ %><a class="img" href="<%= logo_link %>" target="_blank"><% end %>
       <img src="/hotspotlogin/logo<%= logoext %>"/>
     <% if logo_link =~ /\S/ %></a><% end %>
   </div>

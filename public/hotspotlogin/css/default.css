@@ -1,5 +1,5 @@
 body {
-  font-size: 13pt;
+  font-size: 13.5pt;
 }
 h1, h2 {
   text-align: center;
@@ -18,10 +18,10 @@ h2 {
 #powered-by {
   text-align: right; 
   font-style: italic; 
-  margin-right: 3em; 
+  margin-right: 2em; 
   margin-bottom: 1ex;
   font-family: sans-serif; 
-  font-size:80%;
+  font-size:70%;
 }
 #logo-container {
   text-align: center;
@@ -84,3 +84,8 @@ h2 {
   font-family: sans-serif;
   text-align: center;
 }
+
+a img {
+  border: none;
+}
+
