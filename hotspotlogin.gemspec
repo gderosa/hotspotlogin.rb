@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.rdoc_options = ["--main", "README.rdoc"]
   s.executables = ['hotspotlogin'] 
+  s.add_dependency 'facets'
   s.add_dependency 'sinatra'
   s.add_dependency 'rack' # we use Rack::Utils explicitly
   s.add_dependency 'sinatra-r18n'

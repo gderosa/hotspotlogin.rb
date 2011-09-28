@@ -1,3 +1,7 @@
+<% 
+  require 'facets/string'
+  require 'sinatra/r18n'
+%>
 // Requires ChilliLibrary.js
 // See: http://www.coova.org/CoovaChilli/JSON
 //
@@ -113,10 +117,10 @@ function showUserStatus(h) {
     txt = null;
     switch(clientState) {
       case chilliController.stateCodes.NOT_AUTH:
-        txt = 'Logged out from HotSpot';
+        txt = '<%= t.login.result.logoff.uppercase %>';
         break;
       case chilliController.stateCodes.AUTH:
-        txt = 'Logged in to HotSpot';
+        txt = '<%= t.login.result.success.uppercase %>';
         break;
     }
     if (txt) {

@@ -1,5 +1,13 @@
 login:
   "you!": sign in
+  result:
+    success:      "logged in to HotSpot"
+    failed:       "HotSpot login failed"
+    logoff:       "logged out from HotSpot"
+    already:      "already logged in to HotSpot"
+    notyet:       "logged out from HotSpot"
+    logging_into: "logging into HotSpot"
+    none:         "what do you want here?"
 signup:
   "you!": sign up
 account:

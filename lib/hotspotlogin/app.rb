@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'facets/string'
 require 'sinatra/base'
 require 'sinatra/r18n'
 require 'erb'
@@ -95,6 +96,11 @@ module HotSpotLogin
         not_found
       end
     end
+
+    get '/hotspotlogin/js/UserStatus.js' do
+      content_type 'text/javascript'
+      erb :"js/UserStatus.js", :layout => false # localized strings...
+    end
     
     get '/hotspotlogin/?' do 
       if HotSpotLogin.config['uamsecret'] and
@@ -121,8 +127,8 @@ module HotSpotLogin
         # bitwise XOR between (binary) Strings (operator ^) 
         # implemented in extensions/ 
         pappassword = (newpwd ^ newchal).unpack('H32').join 
-        titel = 'Logging in to HotSpot'
-        headline = 'Logging in to HotSpot'
+        titel = headline = t.login.result.logging_into.uppercase 
+                                                        # 'Logging in to HotSpot'
 
         #if uamsecret and userpassword
         if userpassword # PAP
@@ -138,41 +144,45 @@ module HotSpotLogin
         end
       elsif params['res'] == 'success' 
         result = Result::SUCCESS
-        titel = 'Logged in to HotSpot'
-        headline = 'Logged in to HotSpot'
-        bodytext = 'Welcome'
+        titel = headline = t.login.result.success.uppercase   
+                                                  # 'Logged in to HotSpot'
+        bodytext = 'Welcome' # used?
       elsif params['res'] == 'failed' 
         result = Result::FAILED
-        titel = 'HotSpot Login Failed'
-        headline = 'HotSpot Login Failed'
+        titel = headline = t.login.result.failed.uppercase    
+                                                  # 'HotSpot Login Failed'
       elsif params['res'] == 'logoff'
         result = Result::LOGOFF
-        titel = 'Logged out from HotSpot'
-        headline = 'Logged out from HotSpot'
+        titel = headline = t.login.result.logoff.uppercase    
+                                                  # 'Logged out from HotSpot'
       elsif params['res'] == 'already' 
         result = Result::ALREADY 
-        titel = 'Already logged in to HotSpot'
-        headline = 'Already logged in to HotSpot'
+        titel = headline = t.login.result.already.uppercase   
+                                                  # 'Already logged in to HotSpot'
       elsif params['res'] == 'notyet'
         result = Result::NOTYET
-        titel = 'Logged out from HotSpot'
-        headline = 'Logged out from HotSpot'
+        titel = headline = t.login.result.notyet.uppercase    
+                                                  # 'Logged out from HotSpot'
       elsif params['res'] == 'popup1'
         result = Result::PopUp::LOGGING_IN
-        titel = 'Logging into HotSpot'
-        headline = 'Logged in to HotSpot'
+        titel = t.login.result.logging_into.uppercase
+                                                  # 'Logging into HotSpot'
+        headline = t.login.result.success.uppercase
+                                                  # 'Logged in to HotSpot'
       elsif params['res'] == 'popup2'
         result = Result::PopUp::LOGGED_IN
-        titel = 'Logged in to HotSpot'
-        headline = 'Logged in to HotSpot'
+        titel = headline = t.login.result.success.uppercase
+                                                  # 'Logged in to HotSpot'
       elsif params['res'] == 'popup3'
-        result= Result::PopUp::LOGGED_OUT
-        titel = 'Logged out from HotSpot'
-        headline = 'Logged out from HotSpot'
-      elsif params['res'] == '' or !params['res'] # not a form request: err!
+        result = Result::PopUp::LOGGED_OUT
+        titel = headline = t.login.result.logoff.uppercase
+                                                  # 'Logged out from HotSpot'
+
+      elsif params['res'] == '' or !params['res'] # Not a form request nor a redirect..
         result = Result::NONE
-        titel = 'What do you want here?'
-        headline = 'HotSpot Login Failed'
+        titel = t.login.result.none.uppercase    # 'What do you want here?'
+        headline = t.login.result.failed.uppercase
+                                                  # 'HotSpot Login Failed'
       end
 
       logoext = nil

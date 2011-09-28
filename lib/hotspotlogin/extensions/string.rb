@@ -1,5 +1,9 @@
-class String
-  # bitwise XOR, behaves like in Perl or PHP
+require 'facets/string'
+
+=begin
+
+class String # use Facets implementation instead
+  # Bitwise XOR, behaves like in Perl or PHP
   def ^(other)
     # treat as a raw/binary sequence of bytes
     s1 = self.force_encoding  'ASCII-8BIT'
@@ -15,4 +19,4 @@ class String
   end
 end
 
-
+=end

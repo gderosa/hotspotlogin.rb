@@ -1,5 +1,13 @@
 login:
   "you!": accedi
+  result:
+    success:      "accesso effettuato"
+    failed:       "autenticazione fallita"
+    logoff:       "disconnesso dall&rsquo;HotSpot"
+    already:      "gi&agrave; connesso all&rsquo;HotSpot"
+    notyet:       "accedi all&rsquo;HotSpot"
+    logging_into: "accesso in corso"
+    none:         "uhm..."
 signup:
   "you!": registrati
 account:
