@@ -18,8 +18,8 @@
   </div>
 <% end %>
 
-<!-- <h2 id="headline"><%= titel %></h2> --> 
-<!-- the above headline is boring, after all ;) -->
+<h2 id="headline"><%= titel %></h2>
+
 <div id="Reply-Message">
   <% if params['reply'] %>
     <%= Rack::Utils::escape_html params['reply'] %>
@@ -42,7 +42,7 @@
       href=""
       target="_blank"
       style="display:none;"
-    >My Account<a>
+    >My&nbsp;Account</a>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
   <div id="form-container">

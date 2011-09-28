@@ -1,22 +1,22 @@
 body {
-  font-size: 13pt;
   font-family: sans-serif;
+  margin: 1em auto;
+  padding: 0 0.75em;
 }
 h1, h2 {
   text-align: center;
 }
 h1 {
-  font-size: 140%;
   margin: 0.1ex 0;
 }
 h1#custom-headline {
   font-style: italic;
   font-weight: normal;  
 }
-h2 {
-  font-size: 125%;
+h2#headline {
+  font-size: 110%;
   margin-top: 0.1ex;
-  margin-bottom: 0.5ex;
+  margin-bottom: 0.1em;
   font-style: italic;
 }
 #powered-by {
@@ -46,28 +46,28 @@ h2 {
 }
 #logInLogOut-container {
   padding: 0;
-  margin: 0.5em 0;
+  margin: 0 0 0.5em 0;
   text-align: center;
-  font-size: 110%;
+  line-height: 1.6em;
 }
 #logInLogOut-container a {
   margin: 0 0.5ex;
 }
 #status-container {
   text-align: center;
-  margin: 0 0 1em 0;
 }
 #status-table {
-  margin: auto;
-  border: 1px blue solid;
-  padding: 0.5ex;
   font-size: 90%;
+  margin: 0.5em auto;
 }
 #status-table th {
   text-align: left;
 }
 #status-table td {
   text-align: right;
+}
+#status-table th, #status-table td {
+  background: #eef;
 }
 #status-table th.optinfo {
   font-size: 90%;
@@ -78,7 +78,7 @@ h2 {
 }
 #submit-container button, #submit-container input[type="submit"] {
   width: 4.5em;
-  font-size:105%;
+  margin-top: 0.3em;
 }
 #custom-text {
   font-size: 94%;
@@ -88,31 +88,31 @@ h2 {
 #custom-footer {
   margin-top: 2.6em;
   font-size: 90%;
-  text-align: center;
 }
 
 /* button, input[type="submit"] {
   background: white;
 } */
 
-a img {
-  border: none;
-}
-
 #signup-container{
-  font-size:110%;
   font-style:italic;
   font-weight: normal;
+  margin-top:0.2em;
 }
 
 a#signup {
+  border: none;
   color: white;
-  background: #88f;
+  background: #77f;
   padding: 0 0.2em 0.1em 0.2em;
-  text-decoration: none;
   font-style:normal;
 }
 
-th {
-  font-size: 90%;
+a#signup {
+  text-decoration: none;
+  margin-left: 0.2em;
+}
+
+a img {
+  border: none;
 }
