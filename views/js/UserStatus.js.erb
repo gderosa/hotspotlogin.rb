@@ -58,6 +58,14 @@ chilliController.scheduleIdleTimeoutAutorefresh = function() {
   }
 }
 
+chilliController.formatBytesShort = function( b , zeroReturn ) {
+  return chilliController.formatBytes( b , zeroReturn ).
+    replace('Bytes',      'B' ).
+    replace('Kilobytes',  'KB').
+    replace('Megabytes',  'MB').
+    replace('Gigabytes',  'GB'); 
+}
+
 function showUserStatus(h) {
 
   // Utility functions and objects
@@ -228,12 +236,12 @@ function showUserStatus(h) {
       Math.pow(2, 32) * chilliController.accounting.outputGigawords;    
     if (download_e) {
       download_e.innerHTML = (
-        chilliController.formatBytes(download_bytes, 0)
+        chilliController.formatBytesShort(download_bytes, 0)
       );
     }
     if (upload_e) {
       upload_e.innerHTML = (
-        chilliController.formatBytes(upload_bytes, 0)
+        chilliController.formatBytesShort(upload_bytes, 0)
       );
     }
     if (interval_e) {
