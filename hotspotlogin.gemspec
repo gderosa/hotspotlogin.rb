@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://dev.vemarsas.it/projects/hospotlogin/wiki}
   s.description = %q{Traditionally, a PHP or Perl/CGI web page has been used to login unauthenticated users to a Network Access Controller like ChilliSpot; this hotspotlogin implementation is based on Sinatra instead, and relies heavily on the CoovaChilli JSON interface.} 
   s.files = [
+    "Chagelog",
     "README.rdoc", 
     "bin/hotspotlogin", 
     "examples/hotspotlogin.conf.yaml", 
@@ -23,7 +24,7 @@ Gem::Specification.new do |s|
     "lib/hotspotlogin/extensions/string.rb",
     "public/hotspotlogin/css/default.css",
     "public/hotspotlogin/js/ChilliLibrary.js",
-    "public/hotspotlogin/js/UserStatus.js",
+    "views/js/UserStatus.js.erb",
     "views/layout.erb", 
     "views/hotspotlogin.erb", 
     "views/404.erb", 

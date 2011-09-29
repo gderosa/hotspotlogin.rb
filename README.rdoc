@@ -7,8 +7,8 @@ hotspotlogin.cgi used with ChilliSpot and compatible Network Access
 Controllers to provide a Captive Portal environment.
 
 This release features displaying of detailed accounting info for the end user,
-and is strongly based on CoovaChilli Network Access Controller and its
-JSON interface.
+Italian and English localization (based on R18n) and is strongly based on 
+CoovaChilli Network Access Controller and its JSON interface.
 
 * http://github.com/gderosa/hotspotlogin.rb
 
@@ -71,15 +71,22 @@ All this options may be put into the YAML config file specified by --conf
 
 See also chilli.conf(5) manual page.
 
+==== CoovaChilli configuration
+
+If hotspotlogin.rb listens, say, at 192.168.100.100:4990, CoovaChilli must be 
+configured to redirect user to http://192.168.100.100:4990/hotspotlogin 
+(+uamserver+ parameter). Also +uamsecret+ must match in Chilli and hotspotlogin 
+configuration.
+
 ==== Unix Signals
 
   USR1                            sync/update log file (flush buffered I/O) 
-  
+
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2010 Guido De Rosa (guido.derosa*vemarsas.it)
+Copyright (c) 2010, 2011 Guido De Rosa (guido.derosa*vemarsas.it)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
