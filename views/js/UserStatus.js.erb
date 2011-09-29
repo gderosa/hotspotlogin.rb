@@ -66,6 +66,13 @@ chilliController.formatBytesShort = function( b , zeroReturn ) {
     replace('Gigabytes',  'GB'); 
 }
 
+chilliController.refreshAndLogoff = function() {
+  chilliController.refresh();
+  setTimeout('chilliController.logoff()', 250); // a delay is necessary...
+}
+
+
+
 function showUserStatus(h) {
 
   // Utility functions and objects
@@ -149,7 +156,8 @@ function showUserStatus(h) {
           break;
         case chilliController.stateCodes.AUTH:
           e.setAttribute('href', '#');
-          e.onclick = chilliController.logoff; 
+          // e.onclick = chilliController.logoff; 
+          e.onclick = chilliController.refreshAndLogoff;
           e.innerHTML = '<%= t.logout.uppercase.escape_js %>';
           break;
       }
@@ -199,52 +207,59 @@ function showUserStatus(h) {
         formatStateCode(chilliController.clientState) 
       );
     }
+    
     //if (chilliController.terminateCause) {
     //  document.getElementById('terminateCause').innerHTML = (
     //    chilliController.terminateCause
     //  )
     //}
-    if (sessionTime_e) {
-      document.getElementById('sessionTime').innerHTML = (
-        chilliController.formatTime(
-          chilliController.accounting.sessionTime, '0')
-      );
-    }
-    if (sessionTimeLeft_e) {
-      if (chilliController.session.sessionTimeout) {
-        document.getElementById('sessionTimeLeft').innerHTML = (
-          chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
+
+    // So at logoff session stats are preserved :)
+    if (chilliController.clientState == chilliController.stateCodes.AUTH) {
+
+      if (sessionTime_e) {
+        document.getElementById('sessionTime').innerHTML = (
+          chilliController.formatTime(
+            chilliController.accounting.sessionTime, '0')
         );
-        document.getElementById('sessionTimeLeft:row').style.display = '';
-      } else {
-        document.getElementById('sessionTimeLeft').innerHTML = ''
+      }
+      if (sessionTimeLeft_e) {
+        if (chilliController.session.sessionTimeout) {
+          document.getElementById('sessionTimeLeft').innerHTML = (
+            chilliController.formatTime(chilliController.sessionTimeLeft(), 0) 
+          );
+          document.getElementById('sessionTimeLeft:row').style.display = '';
+        } else {
+          document.getElementById('sessionTimeLeft').innerHTML = ''
+        }
+      }
+      if (chilliController.session.idleTimeout) {
+        document.getElementById('idleTimeout').innerHTML = (
+            chilliController.formatTime(chilliController.accounting.idleTime) +
+            ' / '                                                             +
+            chilliController.formatTime(chilliController.session.idleTimeout)
+        );
+        // document.getElementById('idleTimeout:row').style.display = '';
+        // nobody really cares...
+      }
+      var download_bytes = 
+        chilliController.accounting.inputOctets +
+        Math.pow(2, 32) * chilliController.accounting.inputGigawords; 
+      var upload_bytes = 
+        chilliController.accounting.outputOctets +
+        Math.pow(2, 32) * chilliController.accounting.outputGigawords;    
+      if (download_e) {
+        download_e.innerHTML = (
+          chilliController.formatBytesShort(download_bytes, 0)
+        );
+      }
+      if (upload_e) {
+        upload_e.innerHTML = (
+          chilliController.formatBytesShort(upload_bytes, 0)
+        );
       }
     }
-    if (chilliController.session.idleTimeout) {
-      document.getElementById('idleTimeout').innerHTML = (
-          chilliController.formatTime(chilliController.accounting.idleTime) +
-          ' / '                                                             +
-          chilliController.formatTime(chilliController.session.idleTimeout)
-      );
-      // document.getElementById('idleTimeout:row').style.display = '';
-      // nobody really cares...
-    }
-    var download_bytes = 
-      chilliController.accounting.inputOctets +
-      Math.pow(2, 32) * chilliController.accounting.inputGigawords; 
-    var upload_bytes = 
-      chilliController.accounting.outputOctets +
-      Math.pow(2, 32) * chilliController.accounting.outputGigawords;    
-    if (download_e) {
-      download_e.innerHTML = (
-        chilliController.formatBytesShort(download_bytes, 0)
-      );
-    }
-    if (upload_e) {
-      upload_e.innerHTML = (
-        chilliController.formatBytesShort(upload_bytes, 0)
-      );
-    }
+
     if (interval_e) {
       interval_e.innerHTML = (
         chilliController.formatTime(chilliController.interval, 0)
@@ -262,4 +277,3 @@ function showUserStatus(h) {
 
 
 }
-
