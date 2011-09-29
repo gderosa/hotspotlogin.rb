@@ -63,6 +63,7 @@ h2#headline {
 }
 #status-table th {
   text-align: left;
+  text-transform: capitalize;
 }
 #status-table td {
   text-align: right;

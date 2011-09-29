@@ -19,4 +19,13 @@ username:
 logout: logout
 refresh: refresh
 my: my account
+status:
+  username: username
+  client_state: client state
+  session_time: session time
+  session_time_left: session time left
+  idle_time_timeout: idle time/timeout
+  download_traffic: download
+  upload_traffic: upload
+  auto_updated_every: auto updated every
 

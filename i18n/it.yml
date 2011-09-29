@@ -19,3 +19,12 @@ username:
 logout: esci
 refresh: aggiorna
 my: gest. account
+status:
+  username: utente
+  client_state: stato
+  session_time: durata
+  session_time_left: tempo rimanente
+  idle_time_timeout: "inattivit&agrave;/(max)"
+  download_traffic: download
+  upload_traffic: upload
+  auto_updated_every: "autom. aggiornato ogni"

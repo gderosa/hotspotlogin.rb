@@ -69,35 +69,38 @@
   <div id="status-container">
     <table id="status-table">
       <tbody>
+        <%
+          # Yeah, do not use Ruby String methods, instead use CSS text-transform...
+        %>
         <tr id="userName:row">
-          <th scope="row">Username</th>
+          <th scope="row"><%= t.status.username %></th>
           <td id="userName"></td>
         <tr id="clientState:row">
-          <th scope="row">Client State</th>
+          <th scope="row"><%= t.status.client_state %></th>
           <td id="clientState"></td>
         </tr>
         <tr id="sessionTime:row">
-          <th scope="row">Session Time</th>
+          <th scope="row"><%= t.status.session_time %></th>
           <td id="sessionTime"></td>
         </tr>
         <tr id="sessionTimeLeft:row">
-          <th scope="row">Session Time Left</th>
+          <th scope="row"><%= t.status.session_time_left %></th>
           <td id="sessionTimeLeft"></th>
         </tr>
         <tr id="idleTimeout:row">
-          <th scope="row">Idle Time/Timeout</th>
+          <th scope="row"><%= t.status.idle_time_timeout %></th>
           <td id="idleTimeout"></th>
         </tr>
         <tr id="download:row">
-          <th scope="row">Download Traffic</th>
+          <th scope="row"><%= t.status.download_traffic %></th>
           <td id="download"></td>
         </tr>
         <tr id="upload:row">
-          <th scope="row">Upload Traffic</th>
+          <th scope="row"><%= t.status.upload_traffic %></th>
           <td id="upload"></td>
         </tr>
         <tr id="interval:row" style="font-size:95%">
-          <td style="background:transparent; text-align:right" colspan="2" class="optinfo"><span style="font-style:italic; margin-left:0.8em;">Auto updated every:</span> <span style="" id="interval"></td>
+          <td style="background:transparent; text-align:right" colspan="2" class="optinfo"><span style="font-style:italic; margin-left:0.8em;"><%= t.status.auto_updated_every.uppercase %>:</span> <span style="" id="interval"></td>
         </tr>
       </tbody>
     </table>
