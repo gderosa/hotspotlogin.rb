@@ -155,7 +155,7 @@ function showUserStatus(h) {
           e.innerHTML = '<%= t.login.you!.uppercase.escape_js %>';
           break;
         case chilliController.stateCodes.AUTH:
-          e.setAttribute('href', '#');
+          e.setAttribute('href', '#headline');
           // e.onclick = chilliController.logoff; 
           e.onclick = chilliController.refreshAndLogoff;
           e.innerHTML = '<%= t.logout.uppercase.escape_js %>';
@@ -197,6 +197,8 @@ function showUserStatus(h) {
     var download_e        = document.getElementById('download');
     var upload_e          = document.getElementById('upload');
     var interval_e        = document.getElementById('interval');
+    var interval_row_e    = document.getElementById('interval:row');
+
     if (userName_e) {
       userName_e.innerHTML = (
           chilliController.session.userName
@@ -264,6 +266,9 @@ function showUserStatus(h) {
       interval_e.innerHTML = (
         chilliController.formatTime(chilliController.interval, 0)
       );
+    }
+    if (chilliController.clientState == chilliController.stateCodes.NOT_AUTH) {
+      interval_row_e.style.display = 'none';
     }
     
     chilliController.scheduleSessionTimeoutAutorefresh();

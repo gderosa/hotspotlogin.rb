@@ -27,4 +27,4 @@ status:
   idle_time_timeout: "inattivit&agrave;/(max)"
   download_traffic: download
   upload_traffic: upload
-  auto_updated_every: "autom. aggiornato ogni"
+  auto_updated_every: "aggiornato automaticam. ogni"
