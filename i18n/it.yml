@@ -18,11 +18,11 @@ username:
   long: nome utente
 logout: esci
 refresh: aggiorna
-my: gest. account
+my: gestisci account
 status:
   username: utente
   client_state: stato
-  session_time: durata
+  session_time: durata sessione
   session_time_left: tempo rimanente
   idle_time_timeout: "inattivit&agrave;/(max)"
   download_traffic: download
