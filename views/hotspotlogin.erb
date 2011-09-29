@@ -37,14 +37,14 @@
   <div id="logInLogOut-container">
     <a 
       id="logInLogOut" 
-      href="http://<%= uamip %>:<%= uamport %>/logoff"><%= t.logout.uppercase %></a>
-    <a href="#" onClick="javascript:chilliController.refresh();"><%= t.refresh.uppercase %></a>
+      href="http://<%= uamip %>:<%= uamport %>/logoff"><%= t.logout.titlecase %></a>
+    <a href="#" onClick="javascript:chilliController.refresh();"><%= t.refresh.titlecase %></a>
     <a
       id="myAccount"
       href=""
       target="_blank"
       style="display:none;"
-    ><%= t.my.uppercase %></a>
+    ><%= t.my.titlecase %></a>
   </div>
 <% elsif [2, 5, 3, 13].include? result %>
   <div id="form-container">

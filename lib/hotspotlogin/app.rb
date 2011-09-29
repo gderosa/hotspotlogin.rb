@@ -68,7 +68,7 @@ module HotSpotLogin
     # setup of "conditional" HTTPS reverse proxies
     
     get '/' do
-      redirect '/hotspotlogin'
+      redirect "/hotspotlogin?#{request.query_string}"
     end
 
     get '/hotspotlogin/favicon.ico' do

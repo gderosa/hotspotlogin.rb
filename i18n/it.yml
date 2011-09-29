@@ -3,9 +3,9 @@ login:
   result:
     success:      "accesso effettuato"
     failed:       "autenticazione fallita"
-    logoff:       "disconnesso dall'HotSpot"
-    already:      "gi&agrave; connesso all'HotSpot"
-    notyet:       "accedi all'HotSpot"
+    logoff:       "disconnesso dall&rsquo;HotSpot"
+    already:      "gi&agrave; connesso all&rsquo;HotSpot"
+    notyet:       "accedi all&rsquo;HotSpot"
     logging_into: "accesso in corso"
     none:         "uhm..."
 signup:
@@ -18,4 +18,4 @@ username:
   long: nome utente
 logout: esci
 refresh: aggiorna
-my: i miei dati
+my: gest. account

@@ -52,6 +52,7 @@ h2#headline {
 }
 #logInLogOut-container a {
   margin: 0 0.5ex;
+  white-space: nowrap;
 }
 #status-container {
   text-align: center;
