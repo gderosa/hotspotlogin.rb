@@ -68,7 +68,13 @@ chilliController.formatBytesShort = function( b , zeroReturn ) {
 
 chilliController.refreshAndLogoff = function() {
   chilliController.refresh();
-  setTimeout('chilliController.logoff()', 250); // a delay is necessary...
+
+  // inelegant but effective ;-)
+
+  for (delay=250; delay<1600; delay+=250) {
+    setTimeout('if (chilliController.clientState == chilliController.stateCodes.AUTH) chilliController.logoff()', delay);
+  }
+
 }
 
 
