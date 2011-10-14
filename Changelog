@@ -1,3 +1,6 @@
+* 1.3.1 (2011-10.03)
+  * "retry & delay" on logoff   
+
 * 1.3.0 (2011-09-29)
   * Italian and English localization based on R18n
   * some mobile-friendliness (without special layouts or device detection)
@@ -17,12 +20,12 @@
   * --signup-url
 
 * 1.0.2 (2010-12-08)
-	* Display Reply-Message properly
-		* fix serious encoding issues
-		* use Rack instead of ERB utils for escaping
+  * Display Reply-Message properly
+  * fix serious encoding issues
+  * use Rack instead of ERB utils for escaping
 
 * 1.0.1 (2010-11-17)
-	* Urgent bugfix -- handle config['logo'] == nil (TypeError)
+  * Urgent bugfix -- handle config['logo'] == nil (TypeError)
 
 * 1.0.0 (2010-11-16)
   * Major rewrite based on CoovaChilli JSON API (coova.org/CoovaChilli/JSON).
