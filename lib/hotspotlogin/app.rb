@@ -112,9 +112,22 @@ module HotSpotLogin
       userpassword = HotSpotLogin.config['userpassword']
 
       # attempt to login
-      if params['login']  # == 'login'
-                          # So you can put whichever text you want in submit button
-                          # as in <input type="submit" name="login" value="MyText"...
+      if params['login'] or (
+        params['res'] == 'notyet' and request.cookies['UserName'] =~ /\S/
+      ) 
+
+        if params['login']  # submit form button
+          if params['UserName'] =~ /\S/
+            %w{chal uamip uamport UserName Password}.each do |k|
+              response.set_cookie k, params[k] if params[k]
+            end
+          end
+        else                # from cookies
+          %w{chal uamip uamport UserName Password}.each do |k|
+            params[k] = request.cookies[k] if request.cookies[k]
+          end
+        end
+
         hexchal = Array[params['chal']].pack('H32')
         if uamsecret
           newchal = 
