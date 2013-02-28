@@ -118,14 +118,20 @@ module HotSpotLogin
 
         if params['login']  # submit form button
           if params['UserName'] =~ /\S/
-            %w{chal uamip uamport UserName Password}.each do |k|
-              response.set_cookie k, params[k] if params[k]
+            %w{UserName Password}.each do |k|
+              if params[k]
+                response.set_cookie(k, 
+                                    :value    => params[k],
+                                    :path     => '/',
+                                    :expires  => Time.now+180*24*60*60
+                )
+              end
             end
           end
-        else                # from cookies
-          %w{chal uamip uamport UserName Password}.each do |k|
-            params[k] = request.cookies[k] if request.cookies[k]
-          end
+        #else                # from cookies
+        # %w{chal uamip uamport UserName Password}.each do |k|
+        #   params[k] = request.cookies[k] if request.cookies[k]
+        # end
         end
 
         hexchal = Array[params['chal']].pack('H32')
