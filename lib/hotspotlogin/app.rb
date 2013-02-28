@@ -112,9 +112,9 @@ module HotSpotLogin
       userpassword = HotSpotLogin.config['userpassword']
 
       # attempt to login
-      if params['login'] or (
-        params['res'] == 'notyet' and request.cookies['UserName'] =~ /\S/
-      ) 
+      if params['login'] # or (
+        # params['res'] == 'notyet' and request.cookies['UserName'] =~ /\S/
+      # ) 
 
         if params['login']  # submit form button
           if params['UserName'] =~ /\S/

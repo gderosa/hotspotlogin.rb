@@ -7,11 +7,11 @@
     <tbody>
       <tr>
         <th scope="row"><%= t.username.short.capitalize %>:</td>
-        <td><input type="text" name="UserName" size="16" maxlength="255"></td>
+        <td><input type="text" name="UserName" size="16" maxlength="255" value="<%= request.cookies['UserName'] %>"></td>
       </tr>
       <tr>
         <th scope="row">Password:</td>
-        <td><input type="password" name="Password" size="16" maxlength="255"></td>
+        <td><input type="password" name="Password" size="16" maxlength="255" value="<%= request.cookies['Password'] %>"></td>
       </tr>
       <tr> <!-- yeah, it's horrible -->
         <td colspan="2" id="submit-container">
