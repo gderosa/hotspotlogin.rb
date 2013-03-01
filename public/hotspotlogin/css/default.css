@@ -79,8 +79,11 @@ h2#headline {
   text-align: left;
 }
 #submit-container button, #submit-container input[type="submit"] {
-  width: 4.5em;
+  height: 1.7em;
+  width: 5em;
   margin-top: 0.3em;
+  background: #77f;
+  color: white;
 }
 #custom-text {
   font-size: 94%;
@@ -106,7 +109,7 @@ a#signup {
   border: none;
   color: white;
   background: #77f;
-  padding: 0 0.2em 0.1em 0.2em;
+  padding: 0.2em 0.2em 0.1em 0.2em;
   font-style:normal;
 }
 
