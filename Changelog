@@ -1,20 +1,23 @@
+* 1.4.0 (2013-03-01)
+	* Save credentials in cookies
+
 * 1.3.0 (2011-09-29)
-  * Italian and English localization based on R18n
-  * some mobile-friendliness (without special layouts or device detection)
-  * improved JS code for user stats
+	* Italian and English localization based on R18n
+	* some mobile-friendliness (without special layouts or device detection)
+	* improved JS code for user stats
 
 * 1.2.2 (2011-08-08)
-  * Fix logo link and links style
+	* Fix logo link and links style
 
 * 1.2.1 (2011-08-08)
-  * Fix command line options
+	* Fix command line options
 
 * 1.2.0 (2011-08-08)
-  * --logo-link
-  * --my-url ("My Account" link w/ dynamic replacement of the actual username) 
+	* --logo-link
+	* --my-url ("My Account" link w/ dynamic replacement of the actual username) 
 
 * 1.1.0 (2011-08-03)
-  * --signup-url
+	* --signup-url
 
 * 1.0.2 (2010-12-08)
 	* Display Reply-Message properly
@@ -25,17 +28,17 @@
 	* Urgent bugfix -- handle config['logo'] == nil (TypeError)
 
 * 1.0.0 (2010-11-16)
-  * Major rewrite based on CoovaChilli JSON API (coova.org/CoovaChilli/JSON).
-    * tested with CoovaChilli 1.2.5, and IE7, FF3, Epiphany/WebKit
-    * uses JavaScript and popups, your browser must support/allow them
-    * periodic auto-refresh of accounting data to the end user, including
-      downstream and upstream network traffic
-    * supports Session and Idle Timeout, showing relevant info if applicable,
-      and refreshing info when user is disconnected
-    * view customization, with Your Org logo, custom text, etc.
-    * some legacy code still around, sorry
+	* Major rewrite based on CoovaChilli JSON API (coova.org/CoovaChilli/JSON).
+		* tested with CoovaChilli 1.2.5, and IE7, FF3, Epiphany/WebKit
+		* uses JavaScript and popups, your browser must support/allow them
+		* periodic auto-refresh of accounting data to the end user, including
+		  downstream and upstream network traffic
+		* supports Session and Idle Timeout, showing relevant info if applicable,
+		  and refreshing info when user is disconnected
+		* view customization, with Your Org logo, custom text, etc.
+		* some legacy code still around, sorry
 
 * 0.1.2 (2010-11-08) 
-  * Become session leader when forking/daemonizing.
-    * this is to avoid trapping terminal interrupts from a parent console
-      process, etc.
+	* Become session leader when forking/daemonizing.
+		* this is to avoid trapping terminal interrupts from a parent console
+		  process, etc.
