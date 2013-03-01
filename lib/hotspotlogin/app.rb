@@ -102,7 +102,11 @@ module HotSpotLogin
       erb :"js/UserStatus.js", :layout => false # localized strings...
     end
     
-    get '/hotspotlogin/?' do 
+    get '/hotspotlogin/' do # the trailing '/' causes issues apparently
+      redirect "/hotspotlogin?#{request.query_string}"
+    end
+    
+    get '/hotspotlogin' do # the trailing '/' causes issues apparently 
       if HotSpotLogin.config['uamsecret'] and
           HotSpotLogin.config['uamsecret'].length > 0
         uamsecret = HotSpotLogin.config['uamsecret']
