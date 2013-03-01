@@ -13,16 +13,20 @@
         <th scope="row">Password:</td>
         <td><input type="password" name="Password" size="16" maxlength="255" value="<%= request.cookies['Password'] %>"></td>
       </tr>
-      <tr> <!-- yeah, it's horrible -->
-        <td colspan="2" id="submit-container">
+      <tr>
+        <td id="submit-container">
           <input type="submit" name="login" value="<%= t.login.you!.capitalize %>">
+        </td>
+        <td style="padding: none; text-align:right; font-style:italic; vertical-align:top; color:#444">
+          <%= t.remember_me.capitalize %> <input type="checkbox" checked name="remember_me" style="margin:none"/> 
         </td>
       </tr>
     </tbody>
   </table>
 </form>
+<div style="height:1ex;"> <!-- separator --> </div>
 <% if signup_url =~ /\S/ %><span id="signup-container">
   <%= t.account.dont_have.you.capitalize %>?
-  <a id="signup" href="<%= signup_url %>" target="_blank"><%= t.signup.you!.capitalize %>!</a>
+  <a id="signup" href="<%= signup_url %>" target="_blank"><%= t.signup.you!.capitalize %></a>
 </span><% end %>
 

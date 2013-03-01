@@ -118,6 +118,7 @@ module HotSpotLogin
 
         if params['login']  # submit form button
           #if params['UserName'] =~ /\S/ # save empty credentials as a way to reset cookie content
+          if params['remember_me'] == 'on'
             %w{UserName Password}.each do |k|
               if params[k]
                 response.set_cookie(k, 
@@ -127,7 +128,11 @@ module HotSpotLogin
                 )
               end
             end
-          #end
+          else
+            %w{UserName Password}.each do |k|
+              response.delete_cookie k
+            end
+          end
         #else                # from cookies
         # %w{chal uamip uamport UserName Password}.each do |k|
         #   params[k] = request.cookies[k] if request.cookies[k]
