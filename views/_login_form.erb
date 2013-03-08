@@ -27,6 +27,6 @@
 <div style="height:1ex;"> <!-- separator --> </div>
 <% if signup_url =~ /\S/ %><span id="signup-container">
   <%= t.account.dont_have.you.capitalize %>?
-  <a id="signup" href="<%= signup_url %>" target="_blank"><%= t.signup.you!.capitalize %></a>
+  <a id="signup" href="<%= signup_url %>"><%= t.signup.you!.capitalize %></a>
 </span><% end %>
 
