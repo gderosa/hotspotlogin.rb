@@ -1,3 +1,7 @@
+<% 
+  require 'rack/utils'
+%>
+
 <FORM name="form1" METHOD="get" action="<%= request.path_info %>?">
   <INPUT TYPE="HIDDEN" NAME="chal" VALUE="<%= params['challenge'] %>">
   <INPUT TYPE="HIDDEN" NAME="uamip" VALUE="<%= params['uamip'] %>">
@@ -27,6 +31,11 @@
 <div style="height:1ex;"> <!-- separator --> </div>
 <% if signup_url =~ /\S/ %><span id="signup-container">
   <%= t.account.dont_have.you.capitalize %>?
-  <a id="signup" href="<%= signup_url %>"><%= t.signup.you!.capitalize %></a>
+  <% 
+    # DEBUG
+    # require 'pp'
+    # pp request.GET
+  %>
+  <a id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
 </span><% end %>
 
