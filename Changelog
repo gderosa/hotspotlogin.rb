@@ -1,3 +1,7 @@
+* 1.4.1 (2013-03-13)
+	* signup link - share userurl as 'redirect' GET param
+		* so a signup app could redirect successfully registered users
+
 * 1.4.0 (2013-03-01)
 	* Save credentials in cookies
 
