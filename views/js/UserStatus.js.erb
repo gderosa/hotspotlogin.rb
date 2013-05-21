@@ -110,9 +110,9 @@ function showUserStatus(h) {
 
   // If you use non standard configuration, define your configuration
   if (h.uamip)
-    chilliController.host = h.uamip;    // default: 192.168.182.1
+    chilliController.host = h.chilliJSONHost || h.uamip;    // default: 192.168.182.1
   if (h.uamport)
-    chilliController.port = h.uamport;  // default: 3990 
+    chilliController.port = h.chilliJSONPort || h.uamport;  // default: 3990 
 
   // We choose 5 minutes because is the default interval of Chilli->Radius
   // accounting updates, and looks reasonable for busy sites (avoiding too
@@ -122,6 +122,8 @@ function showUserStatus(h) {
   // then define event handler functions
   chilliController.onError  = handleErrors;
   chilliController.onUpdate = updateUI ;
+
+  chilliController.ssl = h.chilliJSONSSL || false;
 
   // get current state
   chilliController.refresh() ;

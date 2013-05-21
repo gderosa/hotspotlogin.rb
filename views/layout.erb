@@ -87,8 +87,9 @@
       <!-- CovaChilli JSON interface -->
       <script language="JavaScript">
         showUserStatus( {
-          uamip:                "<%= uamip %>",
-          uamport:              <%= uamport %>,
+          chilliJSONHost:       "<%= chilli_json_host || uamip %>",
+          chilliJSONPort:       <%= chilli_json_port  || uamport %>,
+          chilliJSONSSL:        <%= chilli_json_ssl ? 'true' : 'false' %>,
           interval:             <%= interval %>,
           myAccountUrlTemplate: '<%= my_url %>'
         } );

@@ -32,6 +32,17 @@ module HotSpotLogin
         @@config['interval'] = seconds.to_i
       end
 
+      # Options which might be useful if JSON(P) status info are fetched from Chilli via HTTPS
+      opts.on('--chilli-json-host HOST', "fetch status info from HOST (name or IP); it defaults to ``uamip'' GET parameter provided by (Coova)Chilli, but might need to be explicited if a name is necessary rather than an IP -- e.g. when getting such info via HTTPS and web browsers might refuse to load them otherwise") do |host|
+        @@config['chilli-json-host'] = host
+      end
+      opts.on('--chilli-json-port PORT', "fetch status info from PORT (see also --chilli-json-host); it defaults to ``uamport'' GET parameter provided by (Coova)Chilli, but needs to be explicited if SSL is used -- Coova Chilli uses a different port, which tipically is uamuiport, if uamuissl is enabled (as in chilli.conf(5))") do |port|
+        @@config['chilli-json-host'] = port
+      end
+      opts.on('--[no-]chilli-json-ssl', "fetch status info using SSL") do |use_ssl|
+        @@config['chilli-json-ssl'] = use_ssl
+      end
+
       opts.on('--custom-headline TEXT', 'display <h1>TEXT</h1> on top of the login page, tipically your Organization name') do |text|
         @@config['custom-headline'] == text
       end

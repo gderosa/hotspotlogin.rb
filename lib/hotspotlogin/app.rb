@@ -226,6 +226,12 @@ module HotSpotLogin
           :bodytext         => bodytext,
           :uamip            => params['uamip'],
           :uamport          => params['uamport'],
+
+          # necessary/explicit to access HTTPS JSON(P)
+          :chilli_json_host => HotSpotLogin.config['chilli-json-host']  || params['uamip'],
+          :chilli_json_port => HotSpotLogin.config['chilli-json-port']  || params['uamport'],
+          :chilli_json_ssl  => HotSpotLogin.config['chilli-json-ssl']   || false,
+
           :userurl          => params['userurl'],
           #:redirurl        => params['redirurl'],
           :redirurl         => params['userurl'],
