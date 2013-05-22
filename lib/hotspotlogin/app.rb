@@ -9,18 +9,21 @@ require 'hotspotlogin/config'
 require 'hotspotlogin/extensions/string'
 
 module HotSpotLogin 
+
+  self.config!
+
   class App < Sinatra::Base
 
     set :root, File.dirname(__FILE__) + '/../..'
     enable :show_exceptions
 
+    register Sinatra::R18n
+
+    set :run,     false
+
     set :bind,    HotSpotLogin.config['listen-address']
     set :port,    HotSpotLogin.config['port']
     set :logging, HotSpotLogin.config['log-http']
-
-    register Sinatra::R18n
-
-    #set :run,     false
 
     result, titel, headline, bodytext = '', '', '', ''
 
