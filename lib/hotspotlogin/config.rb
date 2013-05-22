@@ -49,6 +49,18 @@ module HotSpotLogin
         @@cmdline_config['chilli-json-ssl'] = use_ssl
       end
 
+      opts.on('--[no-]ssl', "listen on HTTPS (without requiring a fronting webserver)") do |use_ssl|
+        @@cmdline_config['ssl'] = use_ssl
+      end
+
+     opts.on('--ssl-cert FILE', "use FILE as SSL certificate to serve HTTPS") do |file|
+        @@cmdline_config['ssl-cert'] = file
+      end
+
+      opts.on('--ssl-key FILE', "use FILE as SSL private key to serve HTTPS") do |file|
+        @@cmdline_config['ssl-key'] = file
+      end
+
       opts.on('--custom-headline TEXT', 'display <h1>TEXT</h1> on top of the login page, tipically your Organization name') do |text|
         @@cmdline_config['custom-headline'] == text
       end
@@ -115,6 +127,9 @@ module HotSpotLogin
 
     end.parse!
 
+    if @@cmdline_config['ssl-cert'] =~ /\S/ and not @@cmdline_config.keys.include? 'ssl'
+      @@cmdline_config['ssl'] = true
+    end
     conffilepath = @@cmdline_config['conf']
     if conffilepath and File.readable? conffilepath
       @@config.update YAML.load(File.read conffilepath)
