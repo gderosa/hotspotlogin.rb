@@ -14,7 +14,7 @@ module HotSpotLogin
     set :root, File.dirname(__FILE__) + '/../..'
     enable :show_exceptions
 
-    set :host,    HotSpotLogin.config['listen-address']
+    set :bind,    HotSpotLogin.config['listen-address']
     set :port,    HotSpotLogin.config['port']
     set :logging, HotSpotLogin.config['log-http']
 
