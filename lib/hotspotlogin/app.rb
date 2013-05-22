@@ -14,16 +14,13 @@ module HotSpotLogin
     set :root, File.dirname(__FILE__) + '/../..'
     enable :show_exceptions
 
-=begin
     set :bind,    HotSpotLogin.config['listen-address']
-    p HotSpotLogin.config['listen-address']
     set :port,    HotSpotLogin.config['port']
     set :logging, HotSpotLogin.config['log-http']
-=end
 
     register Sinatra::R18n
 
-    set :run,     false
+    #set :run,     false
 
     result, titel, headline, bodytext = '', '', '', ''
 

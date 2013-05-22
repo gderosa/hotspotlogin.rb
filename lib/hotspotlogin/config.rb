@@ -117,7 +117,7 @@ module HotSpotLogin
   private  
 
   def self.config_sinatra!
-    App.set :bind,    @@config['listen-address']
+    App.set :host,    @@config['listen-address']
     App.set :port,    @@config['port']
     App.set :logging, @@config['log-http']
   end
