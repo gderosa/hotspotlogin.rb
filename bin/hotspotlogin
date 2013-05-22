@@ -17,10 +17,10 @@ config = HotSpotLogin.config
 
 # Inspired by 
 # http://stackoverflow.com/questions/11405161/enable-ssl-in-sinatra-with-thin/15511536#15511536
-app_blk = lambda do |server|
+app_blk = proc do |server|
   ssl_options = {
     :cert_chain_file => '/etc/lighttpd/margay.localdomain.crt',
-    :private_key_file => '/etc/lighttpd/margay.localdomain.crt',
+    :private_key_file => '/etc/lighttpd/margay.localdomain.key',
     :verify_peer => false
   }
   server.ssl = true
@@ -38,15 +38,7 @@ if config['daemon']
         STDERR.flush
       end
     end
-    HotSpotLogin::App.run! do |server|
-      ssl_options = {
-        :cert_chain_file => '/etc/lighttpd/margay.localdomain.crt',
-        :private_key_file => '/etc/lighttpd/margay.localdomain.crt',
-        :verify_peer => false
-      }
-      server.ssl = true
-      server.ssl_options = ssl_options
-    end
+    HotSpotLogin::App.run! &app_blk
  
     FileUtils.rm config['pid'] if config['pid'] and File.exists? config['pid']
   end
@@ -57,14 +49,5 @@ if config['daemon']
   end
   Process.detach pid
 else # run in foreground
-  HotSpotLogin::App.run! do |server|
-    ssl_options = {
-      :cert_chain_file => '/etc/lighttpd/margay.localdomain.crt',
-      :private_key_file => '/etc/lighttpd/margay.localdomain.key',
-      :verify_peer => false
-    }
-    server.ssl = true
-    server.ssl_options = ssl_options
-  end
-
+  HotSpotLogin::App.run! &app_blk
 end
