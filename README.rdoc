@@ -24,8 +24,9 @@ On the command-line:
   
   $ hotspotlogin [options]
 
+All options may be put into the YAML config file specified by --conf
+
 ==== General Options
-All this options may be put into the YAML config file specified by --conf
 
   --[no-]daemon                   daemonize [by default, executes in foreground]
 
@@ -43,7 +44,27 @@ All this options may be put into the YAML config file specified by --conf
 
   --uamsecret <PASS>              optional, shared secret as in chilli.conf(5) 
 
-  --conf <FILE>                   YAML configuration file, see examples/ 	
+  --conf <FILE>                   YAML configuration file, see examples/
+
+==== Data Backend Options (useful to load JSON(P) data over SSL)
+
+--chilli-json-host HOST           fetch status info from HOST (name or IP); it 
+                                  defaults to ``uamip'' GET parameter provided
+                                  by (Coova)Chilli, but might need to be
+                                  explicited if a name is necessary rather than
+                                  an IP -- e.g. when getting such info via 
+                                  HTTPS and web browsers might refuse to load
+                                  them otherwise
+
+--chilli-json-port PORT           fetch status info from PORT (see also 
+                                   --chilli-json-host); it defaults to 
+                                  ``uamport'' GET parameter provided by 
+                                  (Coova)Chilli, but needs to be explicited if
+                                  SSL is used -- Coova Chilli uses a different
+                                  port, which tipically is ``uamuiport'', if 
+                                  ``uamuissl'' is enabled (as in chilli.conf(5))
+
+--[no-]chilli-json-ssl            fetch status info using SSL
 
 ==== End User Interface Options
 
@@ -77,6 +98,9 @@ If hotspotlogin.rb listens, say, at 192.168.100.100:4990, CoovaChilli must be
 configured to redirect user to http://192.168.100.100:4990/hotspotlogin 
 (+uamserver+ parameter). Also +uamsecret+ must match in Chilli and hotspotlogin 
 configuration.
+
++--chilli-json-port+ must be the same of uamuiport in chilli.conf(5).
++--chilli-json-ssl+ has to be set if uamuissl is set in chilli.conf(5).
 
 ==== Unix Signals
 
