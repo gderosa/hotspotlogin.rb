@@ -33,8 +33,17 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.rdoc"]
   s.rdoc_options = ["--main", "README.rdoc"]
   s.executables = ['hotspotlogin'] 
+  
   s.add_dependency 'facets'
-  s.add_dependency 'sinatra'
-  s.add_dependency 'rack' # we use Rack::Utils explicitly
+  s.add_dependency 'sinatra', '>= 1.4.1'
+    # http://stackoverflow.com/questions/11405161/enable-ssl-in-sinatra-with-thin/15511536#15511536
+    # and some config-related issues...
+  s.add_dependency 'thin'
+  s.add_dependency 'eventmachine' 
+    # NOTE NOTE NOTE: eventmachine (which is ultimately a Sinatra dependency) 
+    # needs to be compiled with OpenSSL support to allow SSL options. 
+    # Don't know how to require this in gemspec...
+  s.add_dependency 'rack' 
+    # we use Rack::Utils explicitly
   s.add_dependency 'sinatra-r18n'
 end
