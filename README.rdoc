@@ -48,7 +48,7 @@ All options may be put into the YAML config file specified by --conf
 
 ==== Data Backend Options (useful to load JSON(P) data over SSL)
 
---chilli-json-host HOST           fetch status info from HOST (name or IP); it 
+  --chilli-json-host <HOST>       fetch status info from HOST (name or IP); it 
                                   defaults to ``uamip'' GET parameter provided
                                   by (Coova)Chilli, but might need to be
                                   explicited if a name is necessary rather than
@@ -56,15 +56,25 @@ All options may be put into the YAML config file specified by --conf
                                   HTTPS and web browsers might refuse to load
                                   them otherwise
 
---chilli-json-port PORT           fetch status info from PORT (see also 
-                                   --chilli-json-host); it defaults to 
+  --chilli-json-port <PORT>       fetch status info from PORT (see also 
+                                  --chilli-json-host); it defaults to 
                                   ``uamport'' GET parameter provided by 
                                   (Coova)Chilli, but needs to be explicited if
                                   SSL is used -- Coova Chilli uses a different
                                   port, which tipically is ``uamuiport'', if 
                                   ``uamuissl'' is enabled (as in chilli.conf(5))
 
---[no-]chilli-json-ssl            fetch status info using SSL
+  --[no-]chilli-json-ssl          fetch status info using SSL
+
+==== Options for serving HTTPS (on own listening port, no need of a fronting webserver)
+
+You need to build the ``eventmachine'' gem with OpenSSL support for this.
+
+  --[no-]ssl                      enable/disable SSL
+
+  --ssl-cert <FILE>               certificate PEM file
+
+  --ssl-key <FILE>                private key PEM file
 
 ==== End User Interface Options
 
@@ -102,6 +112,9 @@ configuration.
 If set, +--chilli-json-host+ must be the same of ``uamlisten'' in 
 chilli.conf(5); +--chilli-json-port+ must be the same of ``uamuiport''; and
 +--chilli-json-ssl+ has to be set if ``uamuissl'' is set in chilli.conf(5).
+
+SSL cert/key should be the same used either by HotSpotLogin and CoovaChilli
+if they serve their HTTPS content at the same address.
 
 ==== Unix Signals
 
