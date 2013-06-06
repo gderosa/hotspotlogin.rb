@@ -106,7 +106,10 @@ module HotSpotLogin
   private  
 
   def self.config_sinatra!
+    # two settings to ensure compatibility... :-o
     App.set :host,    @@config['listen-address']
+    App.set :bind,    @@config['listen-address'] 
+
     App.set :port,    @@config['port']
     App.set :logging, @@config['log-http']
   end
