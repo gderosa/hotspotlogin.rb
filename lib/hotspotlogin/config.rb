@@ -60,6 +60,10 @@ module HotSpotLogin
         @@config['signup-url'] = url
       end
 
+      opts.on('--[no-]remember-credentials', 'allow users to save username/password in cookies') do |rcred|
+        @@config['remember-credentials'] = rcred
+      end
+
       opts.on('--favicon FILE', 'well, favicon ;)') do |file|
         @@config['favicon'] = file
       end
