@@ -122,7 +122,7 @@ module HotSpotLogin
 
         if params['login']  # submit form button
           #if params['UserName'] =~ /\S/ # save empty credentials as a way to reset cookie content
-          if params['remember_me'] == 'on'
+          if params['remember_me'] == 'on' and HotSpotLogin.config['remember-credentials']
             %w{UserName Password}.each do |k|
               if params[k]
                 response.set_cookie(k, 
