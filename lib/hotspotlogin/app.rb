@@ -233,6 +233,7 @@ module HotSpotLogin
           :interval         => HotSpotLogin.config['interval'],
           :signup_url       => HotSpotLogin.config['signup-url'],
           :my_url           => HotSpotLogin.config['my-url'],
+          :remember_credentials => HotSpotLogin.config['remember-credentials'],
           :custom_headline  => 
               HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
           :custom_text      => HotSpotLogin.config['custom-text'],

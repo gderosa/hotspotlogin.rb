@@ -1,5 +1,9 @@
 <% 
   require 'rack/utils'
+
+  # DEBUG
+  # puts "remember_credentials:"
+  # p remember_credentials
 %>
 
 <FORM name="form1" METHOD="get" action="<%= request.path_info %>?">
@@ -22,7 +26,7 @@
           <input type="submit" name="login" value="<%= t.login.you!.capitalize %>">
         </td>
         <td style="padding: none; text-align:right; font-style:italic; vertical-align:top; color:#444">
-          <%= t.remember_me.capitalize %> <input type="checkbox" checked name="remember_me" style="margin:none"/> 
+          <% if remember_credentials %> <%= t.remember_me.capitalize %> <input type="checkbox" checked name="remember_me" style="margin:none"/><% end %> 
         </td>
       </tr>
     </tbody>
