@@ -61,6 +61,10 @@ All this options may be put into the YAML config file specified by --conf
                                   the actual username, e.g. 
                                   http://accounts.mysite.com/?id=-USER- 
 
+  --[no-]remember-credentials     give users the possibility to store their credentials
+                                  within a cookie in their own computer and avoid typing
+                                  them again [enabled by default]
+
   --custom-text <FRAGMENT.html>
 
   --custom-footer <FRAGMENT.html>
