@@ -42,4 +42,7 @@
   %>
   <a id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
 </span><% end %>
+<% if password_recovery_url =~ /\S/ %><span id="password-recovery-container">
+  <a id="password_recovery" href="<%= password_recovery_url %>"><%= t.password_recovery.you!.capitalize %></a>
+</span><% end %>
 

@@ -221,27 +221,27 @@ module HotSpotLogin
       erb(
         :hotspotlogin,
         :locals => {
-          :titel            => titel,
-          :headline         => headline, # like 'Logged out from HotSpot'
-          :bodytext         => bodytext,
-          :uamip            => params['uamip'],
-          :uamport          => params['uamport'],
-          :userurl          => params['userurl'],
-          #:redirurl        => params['redirurl'],
-          :redirurl         => params['userurl'],
-          :timeleft         => params['timeleft'], # legacy... 
-          :interval         => HotSpotLogin.config['interval'],
-          :signup_url       => HotSpotLogin.config['signup-url'],
-          :my_url           => HotSpotLogin.config['my-url'],
-          :remember_credentials => HotSpotLogin.config['remember-credentials'],
-          :custom_headline  => 
-              HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
-          :custom_text      => HotSpotLogin.config['custom-text'],
-          :custom_footer    => HotSpotLogin.config['custom-footer'],
-          :logoext          => logoext,
-          :logo_link        => HotSpotLogin.config['logo-link'],
-          :result           => result,
-          :reply            => params['reply'] # Reply-Message
+          :titel                  => titel,
+          :headline               => headline, # like 'Logged out from HotSpot'
+          :bodytext               => bodytext,
+          :uamip                  => params['uamip'],
+          :uamport                => params['uamport'],
+          :userurl                => params['userurl'],
+          #:redirurl              => params['redirurl'],
+          :redirurl               => params['userurl'],
+          :timeleft               => params['timeleft'], # legacy... 
+          :interval               => HotSpotLogin.config['interval'],
+          :signup_url             => HotSpotLogin.config['signup-url'],
+          :my_url                 => HotSpotLogin.config['my-url'],
+          :password_recovery_url  => HotSpotLogin.config['password-recovery-url'],
+          :remember_credentials   => HotSpotLogin.config['remember-credentials'],
+          :custom_headline        => HotSpotLogin.config['custom-headline'], # like "MyOrg Name"
+          :custom_text            => HotSpotLogin.config['custom-text'],
+          :custom_footer          => HotSpotLogin.config['custom-footer'],
+          :logoext                => logoext,
+          :logo_link              => HotSpotLogin.config['logo-link'],
+          :result                 => result,
+          :reply                  => params['reply'] # Reply-Message
         }
       )
 
