@@ -59,7 +59,9 @@ All this options may be put into the YAML config file specified by --conf
 
   --my-url <URL>                  "My Account" link, where -USER- will be replaced by 
                                   the actual username, e.g. 
-                                  http://accounts.mysite.com/?id=-USER- 
+                                  http://accounts.mysite.com/?id=-USER-
+
+  --password-recovery-url <URL>   e.g. http://accounts.mysite.com/password-recovery.html
 
   --[no-]remember-credentials     give users the possibility to store their credentials
                                   within a cookie in their own computer and avoid typing
