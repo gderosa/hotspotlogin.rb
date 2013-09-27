@@ -42,8 +42,8 @@
 <% end %>
 <% if password_recovery_url =~ /\S/ %>
   <div id="password-recovery-container">
-    Password dimenticata?
-    <a id="password-recovery" href="<%= password_recovery_url %>"><%= t.password_recovery.you!.capitalize.gsub(/\s/, '&nbsp;') %></a>
+    <%= t.password.forgot.capitalize %>?
+    <a id="password-recovery" href="<%= password_recovery_url %>"><%= t.password.recovery.you!.capitalize.gsub(/\s/, '&nbsp;') %></a>
   </div>
 <% end %>
 

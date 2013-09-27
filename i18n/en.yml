@@ -29,6 +29,8 @@ status:
   upload_traffic: upload
   auto_updated_every: auto updated every
 remember_me: remember me
-password_recovery:
-  any: password recovery
-  "you!": recover password
+password:
+  recovery:
+    any: password recovery
+    "you!": recover password
+  forgot: forgot password
