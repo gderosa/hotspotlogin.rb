@@ -37,7 +37,7 @@
 <% if signup_url =~ /\S/ %>
   <span id="signup-container">
     <%= t.account.dont_have.you.capitalize %>?
-    <a id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
+    <a <%= 'target="_blank"' unless mobile? %> id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
   </span>
 <% end %>
 <% if password_recovery_url =~ /\S/ %>
