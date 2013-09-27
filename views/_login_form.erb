@@ -43,7 +43,7 @@
 <% if password_recovery_url =~ /\S/ %>
   <div id="password-recovery-container">
     <%= t.password.forgot.capitalize %>?
-    <a id="password-recovery" href="<%= password_recovery_url %>"><%= t.password.recovery.you!.capitalize.gsub(/\s/, '&nbsp;') %></a>
+    <a id="password-recovery" href="<%= password_recovery_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.password.recovery.you!.capitalize.gsub(/\s/, '&nbsp;') %></a>
   </div>
 <% end %>
 
