@@ -60,6 +60,10 @@ module HotSpotLogin
         @@config['signup-url'] = url
       end
 
+      opts.on('--password-recovery-url URL', 'display an external link where end-user may recover/reset her password') do |url|
+        @@config['password-recovery-url'] = url
+      end
+
       opts.on('--[no-]remember-credentials', 'allow users to save username/password in cookies') do |rcred|
         @@config['remember-credentials'] = rcred
       end
