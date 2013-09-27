@@ -99,23 +99,20 @@ h2#headline {
   background: white;
 } */
 
-#signup-container{
+#signup-container, #password-recovery-container {
   font-style:italic;
   font-weight: normal;
-  margin-top:0.2em;
 }
 
-a#signup {
+a#signup  {
   border: none;
   color: white;
   background: #77f;
   padding: 0.2em 0.2em 0.1em 0.2em;
   font-style:normal;
-}
-
-a#signup {
   text-decoration: none;
   margin-left: 0.2em;
+  line-height: 2.4em;
   font-size: 130%;
 }
 

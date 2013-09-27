@@ -33,16 +33,17 @@
   </table>
 </form>
 <div style="height:1ex;"> <!-- separator --> </div>
-<% if signup_url =~ /\S/ %><span id="signup-container">
-  <%= t.account.dont_have.you.capitalize %>?
-  <% 
-    # DEBUG
-    # require 'pp'
-    # pp request.GET
-  %>
-  <a id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
-</span><% end %>
-<% if password_recovery_url =~ /\S/ %><span id="password-recovery-container">
-  <a id="password_recovery" href="<%= password_recovery_url %>"><%= t.password_recovery.you!.capitalize %></a>
-</span><% end %>
+
+<% if signup_url =~ /\S/ %>
+  <span id="signup-container">
+    <%= t.account.dont_have.you.capitalize %>?
+    <a id="signup" href="<%= signup_url %>?redirect=<%= Rack::Utils.escape params['userurl'] %>"><%= t.signup.you!.capitalize %></a>
+  </span>
+<% end %>
+<% if password_recovery_url =~ /\S/ %>
+  <div id="password-recovery-container">
+    Password dimenticata?
+    <a id="password-recovery" href="<%= password_recovery_url %>"><%= t.password_recovery.you!.capitalize.gsub(/\s/, '&nbsp;') %></a>
+  </div>
+<% end %>
 
